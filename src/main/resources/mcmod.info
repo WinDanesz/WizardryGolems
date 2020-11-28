@@ -1,0 +1,10 @@
+[{
+    "modid": "wizardrygolems",
+    "name": "Wizardry Golems by Dan",
+    "description": "Wizardry Golems is an addon mod for Electroblob's Wizardry, adding new spells based on the Extra Golems mod of skyjay1. It adds magical spells and items to the game related to Golem Summons which can be used in battle or for utility purposes.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/wizardry-golems",
+    "authorList": ["WinDanesz"],
+    "credits": "Electroblob for creating his Electroblob's Wizardry mod and skyjay1 for creating his Extra Golems mod."
+}]

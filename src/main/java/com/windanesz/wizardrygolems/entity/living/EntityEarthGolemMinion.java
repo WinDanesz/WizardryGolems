@@ -1,0 +1,21 @@
+package com.windanesz.wizardrygolems.entity.living;
+
+import net.minecraft.util.DamageSource;
+import net.minecraft.world.World;
+
+public abstract class EntityEarthGolemMinion extends EntityGolemBaseMinion implements IEarthGolem {
+	public EntityEarthGolemMinion(World world) {
+		super(world);
+	}
+
+	@Override
+	public void onDespawn() {
+		super.onDespawn();
+	}
+
+	@Override
+	public void onDeath(DamageSource cause) {
+		onDeathDelegate(this);
+		super.onDeath(cause);
+	}
+}

@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Random;
 
-@Mod(modid = WizardryGolems.MODID, name = WizardryGolems.NAME, version = WizardryGolems.VERSION, acceptedMinecraftVersions = WizardryGolems.MC_VERSION, dependencies = "required-after:ebwizardry@[4.3,4.4)")
+@Mod(modid = WizardryGolems.MODID, name = WizardryGolems.NAME, version = WizardryGolems.VERSION, acceptedMinecraftVersions = WizardryGolems.MC_VERSION, dependencies = "required-after:ebwizardry@[4.3,4.4);required-after:golems@[7.1.9,)")
 public class WizardryGolems {
 
 	public static final String MODID = "wizardrygolems";
@@ -36,7 +36,6 @@ public class WizardryGolems {
 	// Location of the proxy code, used by Forge.
 	@SidedProxy(clientSide = "com.windanesz.wizardrygolems.client.ClientProxy", serverSide = "com.windanesz.wizardrygolems.CommonProxy")
 	public static CommonProxy proxy;
-
 	/**
 	 * Static instance of the {@link electroblob.wizardry.Settings} object for Wizardry.
 	 */

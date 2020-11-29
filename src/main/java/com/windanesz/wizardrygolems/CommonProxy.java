@@ -43,7 +43,6 @@ import com.windanesz.wizardrygolems.entity.living.EntitySandstoneGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityStrawThornsGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityTNTGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityTerracottaGolemMinion;
-import net.minecraft.init.Blocks;
 
 public class CommonProxy {
 
@@ -60,27 +59,6 @@ public class CommonProxy {
 	public static void registerGolems() {
 
 		/// Golem Block placeholder
-		GolemLookup.addGolem(EntityBoneGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityBookshelfGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityClayGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityCoalGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityConcreteGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityCraftingGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityFurnaceGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityGlowstoneGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityGoldGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityIceGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityLeafGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityMagmaGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityMelonGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityMushroomGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityOakWoodenGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityObsidianGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityPrismarineGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntitySandstoneGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityStrawThornsGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityTNTGolemMinion.class, Blocks.BEDROCK);
-		GolemLookup.addGolem(EntityTerracottaGolemMinion.class, Blocks.BEDROCK);
 
 		/// Config linking
 		GolemLookup.addConfig(EntityBoneGolemMinion.class, GolemLookup.getConfig(EntityBoneGolem.class));

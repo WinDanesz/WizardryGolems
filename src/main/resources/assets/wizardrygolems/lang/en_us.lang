@@ -22,7 +22,7 @@ entity.wizardrygolems\:golem_tnt_minion.name=TNT Golem Minion
 entity.wizardrygolems\:golem_wooden_oak_minion.name=Wooden Golem Minion
 entity.wizardrygolems\:golem_straw_minion.name=Strawthorns Golem Minion
 entity.wizardrygolems\:golem_melon_minion.name=Melon Golem Minion
-entity.wizardrygolems\:golem_standstone_minion.name=Sandstone Golem Minion
+entity.wizardrygolems\:golem_sandstone_minion.name=Sandstone Golem Minion
 
 # ITEMS
 item.wizardrygolems\:golemancy_spell_book.name=Spell Book

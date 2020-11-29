@@ -1,5 +1,6 @@
 package com.windanesz.wizardrygolems.registry;
 
+import com.golems.util.GolemLookup;
 import com.windanesz.wizardrygolems.WizardryGolems;
 import com.windanesz.wizardrygolems.entity.living.EntityBoneGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityBookshelfGolemMinion;
@@ -23,6 +24,7 @@ import com.windanesz.wizardrygolems.entity.living.EntityStrawThornsGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityTNTGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityTerracottaGolemMinion;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -34,7 +36,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 @Mod.EventBusSubscriber
 public class WizardryGolemsEntities {
 
-	private WizardryGolemsEntities() {}
+	private WizardryGolemsEntities() {} // No instances!
 
 	/**
 	 * Most entity trackers fall into one of a few categories, so they are defined here for convenience. This
@@ -68,6 +70,7 @@ public class WizardryGolemsEntities {
 		IForgeRegistry<EntityEntry> registry = event.getRegistry();
 
 		// mobs
+		registry.register(createEntry(EntityMagmaGolemMinion.class, "golem_magma_minion", TrackingType.LIVING).build());
 		registry.register(createEntry(EntityBoneGolemMinion.class, "golem_bone_minion", TrackingType.LIVING).build());
 		registry.register(createEntry(EntityBookshelfGolemMinion.class, "golem_bookshelf_minion", TrackingType.LIVING).build());
 		registry.register(createEntry(EntityClayGolemMinion.class, "golem_clay_minion", TrackingType.LIVING).build());
@@ -79,7 +82,6 @@ public class WizardryGolemsEntities {
 		registry.register(createEntry(EntityGoldGolemMinion.class, "golem_gold_minion", TrackingType.LIVING).build());
 		registry.register(createEntry(EntityIceGolemMinion.class, "golem_ice_minion", TrackingType.LIVING).build());
 		registry.register(createEntry(EntityLeafGolemMinion.class, "golem_leaf_minion", TrackingType.LIVING).build());
-		registry.register(createEntry(EntityMagmaGolemMinion.class, "golem_magma_minion", TrackingType.LIVING).build());
 		registry.register(createEntry(EntityMelonGolemMinion.class, "golem_melon_minion", TrackingType.LIVING).build());
 		registry.register(createEntry(EntityMushroomGolemMinion.class, "golem_mushroom_minion", TrackingType.LIVING).build());
 		registry.register(createEntry(EntityOakWoodenGolemMinion.class, "golem_wooden_oak_minion", TrackingType.LIVING).build());
@@ -89,6 +91,29 @@ public class WizardryGolemsEntities {
 		registry.register(createEntry(EntityStrawThornsGolemMinion.class, "golem_straw_minion", TrackingType.LIVING).build());
 		registry.register(createEntry(EntityTNTGolemMinion.class, "golem_tnt_minion", TrackingType.LIVING).build());
 		registry.register(createEntry(EntityTerracottaGolemMinion.class, "golem_terracotta_minion", TrackingType.LIVING).build());
+
+
+		GolemLookup.addGolem(EntityBoneGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityBookshelfGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityClayGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityCoalGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityConcreteGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityCraftingGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityFurnaceGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityGlowstoneGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityGoldGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityIceGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityLeafGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityMagmaGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityMelonGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityMushroomGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityOakWoodenGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityObsidianGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityPrismarineGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntitySandstoneGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityStrawThornsGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityTNTGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityTerracottaGolemMinion.class, Blocks.BEDROCK);
 
 		//		registry.register(createEntry(EntityImbuementTriggerer.class, 		"entity_imbuement_triggerer", 		TrackingType.CONSTRUCT).build());
 

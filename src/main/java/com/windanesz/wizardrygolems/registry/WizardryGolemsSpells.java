@@ -28,7 +28,6 @@ public final class WizardryGolemsSpells {
 
 //	public static final Spell antimagic_field = placeholder();
 
-	@SuppressWarnings("unchecked")
 	@SubscribeEvent
 	public static void register(RegistryEvent.Register<Spell> event) {
 

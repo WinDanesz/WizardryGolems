@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public final class EntityTerracottaGolemMinion extends EntityEarthGolemMinion {
+public class EntityTerracottaGolemMinion extends EntityEarthGolemMinion {
 
 	public EntityTerracottaGolemMinion(final World world) {
 		super(world);

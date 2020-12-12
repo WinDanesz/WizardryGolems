@@ -1,0 +1,68 @@
+#PARSE_ESCAPES
+
+itemGroup.wizardrygolems.tabWizardryGolems=巫术学傀儡
+
+# ENTITY
+entity.wizardrygolems\:golem_magma_minion.name=岩浆块傀儡奴仆
+entity.wizardrygolems\:golem_leaf_minion.name=树叶傀儡奴仆
+entity.wizardrygolems\:golem_clay_minion.name=粘土傀儡奴仆
+entity.wizardrygolems\:golem_mushroom_minion.name=蘑菇傀儡奴仆
+entity.wizardrygolems\:golem_bookshelf_minion.name=书架傀儡奴仆
+entity.wizardrygolems\:golem_terracotta_minion.name=陶瓦傀儡奴仆
+entity.wizardrygolems\:golem_gold_minion.name=金傀儡奴仆
+entity.wizardrygolems\:golem_coal_minion.name=煤炭傀儡奴仆
+entity.wizardrygolems\:golem_bone_minion.name=骨头傀儡奴仆
+entity.wizardrygolems\:golem_ice_minion.name=冰傀儡奴仆
+entity.wizardrygolems\:golem_concrete_minion.name=混凝土傀儡奴仆
+entity.wizardrygolems\:golem_obsidian_minion.name=黑曜石傀儡奴仆
+entity.wizardrygolems\:golem_crafting_minion.name=工作台傀儡奴仆
+entity.wizardrygolems\:golem_glowstone_minion.name=萤石傀儡奴仆
+entity.wizardrygolems\:golem_prismarine_minion.name=海晶石傀儡奴仆
+entity.wizardrygolems\:golem_tnt_minion.name=TNT傀儡奴仆
+entity.wizardrygolems\:golem_wooden_oak_minion.name=木头傀儡奴仆
+entity.wizardrygolems\:golem_straw_minion.name=稻草傀儡奴仆
+entity.wizardrygolems\:golem_melon_minion.name=西瓜傀儡奴仆
+entity.wizardrygolems\:golem_sandstone_minion.name=沙石傀儡奴仆
+
+# ITEMS
+item.wizardrygolems\:golemancy_spell_book.name=法术书 傀儡学
+item.wizardrygolems\:golemancy_scroll.name=卷轴 傀儡学
+
+item.wizardrygolems\:ring_ancient_emperor.name=古代皇帝的戒指
+item.wizardrygolems\:ring_ancient_emperor.desc=傀儡学 召唤一个陶瓦傀儡军队
+
+item.wizardrygolems\:ring_engraved_concrete.name=雕刻混凝土戒指
+item.wizardrygolems\:ring_engraved_concrete.desc=傀儡学 召唤两只混凝土傀儡
+
+item.wizardrygolems\:ring_obsidian.name=黑曜石头颅戒指
+item.wizardrygolems\:ring_obsidian.desc=傀儡学 召唤一个坚固的黑曜石铁傀儡
+
+item.wizardrygolems\:ring_sandstone.name=奇怪的沙石戒指
+item.wizardrygolems\:ring_sandstone.desc=傀儡学 召唤五只沙石傀儡
+
+item.wizardrygolems\:amulet_gaia.name=大地之怒
+item.wizardrygolems\:amulet_gaia.desc=当一个大地傀儡被杀死，会有10%%的机会引发一次地震
+
+item.wizardrygolems\:ring_grass.name=草编戒指
+item.wizardrygolems\:ring_grass.desc=傀儡学 召唤四只稻草傀儡
+
+item.wizardrygolems\:ring_glistering.name=熠熠生辉的戒指
+item.wizardrygolems\:ring_glistering.desc=傀儡学 在战斗时总会召唤一只西瓜傀儡来治疗你
+
+item.wizardrygolems\:ring_forest_guardian.name=森林守卫之戒
+item.wizardrygolems\:ring_forest_guardian.desc=傀儡学 召唤两只木头傀儡和四只树叶傀儡奴仆
+
+item.wizardrygolems\:charm_dried_mushroom.name=干蘑菇护符
+item.wizardrygolems\:charm_dried_mushroom.desc=傀儡学 召唤3只蘑菇傀儡来让攻击对象中毒
+
+item.wizardrygolems\:amulet_snare.name=荆棘护身符
+item.wizardrygolems\:amulet_snare.desc=傀儡学 傀儡被杀后会留下一个减速陷阱
+
+item.wizardrygolems\:amulet_deathweed.name=死亡之花护身符
+item.wizardrygolems\:amulet_deathweed.desc=当一个傀儡学傀儡被杀时，有10%%几率激活森林诅咒（森林中有100%%的几率）
+
+# SPELLS
+spell.wizardrygolems\:earth_golemancy=傀儡学
+spell.wizardrygolems\:earth_golemancy.desc=在土壤中注入生命能量形成傀儡
+spell.wizardrygolems\:earth_golemancy.low_wand_tier=只有大师级大地魔杖才能召唤黑曜石傀儡
+

@@ -22,7 +22,7 @@ entity.wizardrygolems\:golem_tnt_minion.name=TNT傀儡奴仆
 entity.wizardrygolems\:golem_wooden_oak_minion.name=木头傀儡奴仆
 entity.wizardrygolems\:golem_straw_minion.name=稻草傀儡奴仆
 entity.wizardrygolems\:golem_melon_minion.name=西瓜傀儡奴仆
-entity.wizardrygolems\:golem_sandstone_minion.name=沙石傀儡奴仆
+entity.wizardrygolems\:golem_sandstone_minion.name=砂岩傀儡奴仆
 
 # ITEMS
 item.wizardrygolems\:golemancy_spell_book.name=法术书 傀儡学
@@ -37,8 +37,8 @@ item.wizardrygolems\:ring_engraved_concrete.desc=傀儡学 召唤两只混凝土
 item.wizardrygolems\:ring_obsidian.name=黑曜石头颅戒指
 item.wizardrygolems\:ring_obsidian.desc=傀儡学 召唤一个坚固的黑曜石铁傀儡
 
-item.wizardrygolems\:ring_sandstone.name=奇怪的沙石戒指
-item.wizardrygolems\:ring_sandstone.desc=傀儡学 召唤五只沙石傀儡
+item.wizardrygolems\:ring_sandstone.name=奇怪的砂岩戒指
+item.wizardrygolems\:ring_sandstone.desc=傀儡学 召唤五只砂岩傀儡
 
 item.wizardrygolems\:amulet_gaia.name=大地之怒
 item.wizardrygolems\:amulet_gaia.desc=当一个大地傀儡被杀死，会有10%%的机会引发一次地震

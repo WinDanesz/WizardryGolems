@@ -47,12 +47,6 @@ public class EntityGoldGolemMinion extends EntityGolemBaseMinion implements ISpe
 	}
 
 	@Override
-	public void onUpdate(){
-		super.onUpdate();
-		this.updateDelegate();
-	}
-
-	@Override
 	protected ResourceLocation applyTexture() {
 		return makeTexture(ExtraGolems.MODID, GolemNames.GOLD_GOLEM);
 	}

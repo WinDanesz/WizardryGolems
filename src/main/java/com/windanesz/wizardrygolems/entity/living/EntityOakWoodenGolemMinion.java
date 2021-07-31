@@ -12,16 +12,8 @@ public class EntityOakWoodenGolemMinion extends EntityEarthGolemMinion {
 
 	public EntityOakWoodenGolemMinion(World world) {
 		super(world);
-
-
 		this.setCanSwim(true);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.30D);
-	}
-
-	@Override
-	public void onUpdate() {
-		super.onUpdate();
-		this.updateDelegate();
 	}
 
 	@Override

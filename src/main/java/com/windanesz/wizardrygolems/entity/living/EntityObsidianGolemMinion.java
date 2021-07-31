@@ -11,12 +11,6 @@ public class EntityObsidianGolemMinion extends EntityEarthGolemMinion {
 
 	public EntityObsidianGolemMinion(World world) {
 		super(world);
-	}
-
-	@Override
-	public void onUpdate(){
-		super.onUpdate();
-		this.updateDelegate();
 		this.setImmuneToFire(true);
 	}
 

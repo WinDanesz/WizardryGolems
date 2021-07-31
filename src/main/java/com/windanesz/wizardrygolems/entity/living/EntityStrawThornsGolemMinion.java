@@ -40,46 +40,37 @@ public class EntityStrawThornsGolemMinion extends EntityEarthGolemMinion {
 		super.onLivingUpdate();
 		// look for crops to boost
 		if (this.allowed && this.rand.nextInt(40) == 0) {
-			if (!world.isRemote)
-				tryBoostCrop();
+			if (!world.isRemote) { tryBoostCrop(); }
 		}
 	}
 
 	private boolean tryBoostCrop() {
 		final int variationY = 1;
-			final int x = MathHelper.floor(this.posX);
-			final int y = MathHelper.floor(this.posY);
-			final int z = MathHelper.floor(this.posZ);
-			final int x1 = this.rand.nextInt(this.range * 2) - this.range;
-			final int y1 = this.rand.nextInt(variationY * 2) - variationY;
-			final int z1 = this.rand.nextInt(this.range * 2) - this.range;
-			final BlockPos pos = new BlockPos(x + x1, y + y1, z + z1);
+		final int x = MathHelper.floor(this.posX);
+		final int y = MathHelper.floor(this.posY);
+		final int z = MathHelper.floor(this.posZ);
+		final int x1 = this.rand.nextInt(this.range * 2) - this.range;
+		final int y1 = this.rand.nextInt(variationY * 2) - variationY;
+		final int z1 = this.rand.nextInt(this.range * 2) - this.range;
+		final BlockPos pos = new BlockPos(x + x1, y + y1, z + z1);
 
-			if(world.getBlockState(pos).getBlock() != WizardryBlocks.thorns && world.isAirBlock(pos) && BlockUtils.canBlockBeReplaced(world, pos) && BlockUtils.canBlockBeReplaced(world, pos.up())){
+		if (world.getBlockState(pos).getBlock() != WizardryBlocks.thorns && world.isAirBlock(pos) && BlockUtils.canBlockBeReplaced(world, pos) && BlockUtils.canBlockBeReplaced(world, pos.up())) {
 
-				((BlockThorns) WizardryBlocks.thorns).placeAt(world, pos, 3);
+			((BlockThorns) WizardryBlocks.thorns).placeAt(world, pos, 3);
 
-				TileEntity tileentity = world.getTileEntity(pos);
+			TileEntity tileentity = world.getTileEntity(pos);
 
-				if(tileentity instanceof TileEntityThorns){
+			if (tileentity instanceof TileEntityThorns) {
 
-					((TileEntityThorns)tileentity).setLifetime((int)(400));
+				((TileEntityThorns) tileentity).setLifetime((int) (400));
 
-					if(getCaster() != null) ((TileEntityThorns)tileentity).setCaster(getCaster());
-					((TileEntityThorns)tileentity).damageMultiplier = 1;
+				if (getCaster() != null) { ((TileEntityThorns) tileentity).setCaster(getCaster()); }
+				((TileEntityThorns) tileentity).damageMultiplier = 1;
 
-					((TileEntityThorns)tileentity).sync();
-				} else {
-				}
-//			}
+				((TileEntityThorns) tileentity).sync();
+			}
 		}
 		return false;
-	}
-
-	@Override
-	public void onUpdate() {
-		super.onUpdate();
-		this.updateDelegate();
 	}
 
 	@Override

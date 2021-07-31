@@ -3,30 +3,24 @@ package com.windanesz.wizardrygolems.entity.living;
 import com.golems.main.ExtraGolems;
 import com.golems.util.GolemConfigSet;
 import com.golems.util.GolemNames;
-import electroblob.wizardry.client.DrawingUtils;
-import electroblob.wizardry.entity.living.ISummonedCreature;
-import electroblob.wizardry.util.ParticleBuilder;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
+import com.windanesz.wizardrygolems.registry.WizardryGolemsSpells;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import static electroblob.wizardry.spell.SpellMinion.MINION_LIFETIME;
 
 /**
  * Based on {@link com.golems.entity.EntityMagmaGolem} - Author: skyjay1
  * Author: WinDanesz
  */
-public class EntityMagmaGolemMinion extends EntityGolemBaseMinion implements ISummonedCreature {
+public class EntityMagmaGolemMinion extends EntityFireGolemMinion {
 
 	public static final String ALLOW_FIRE_SPECIAL = "Allow Special: Burn Enemies";
 	public static final String ALLOW_LAVA_SPECIAL = "Allow Special: Melt Cobblestone";
@@ -121,27 +115,29 @@ public class EntityMagmaGolemMinion extends EntityGolemBaseMinion implements ISu
 	@Override
 	public void setDead() {
 		// spawn baby golems here if possible
-		if (!this.world.isRemote && !this.isChild() && getConfig(this).getBoolean(ALLOW_SPLITTING)) {
-			EntityMagmaGolemMinion minion1 = new EntityMagmaGolemMinion(this.world, true);
-			EntityMagmaGolemMinion minion2 = new EntityMagmaGolemMinion(this.world, true);
-			// copy attack target info
-			if (this.getAttackTarget() != null) {
-				minion1.setAttackTarget(this.getAttackTarget());
-				minion2.setAttackTarget(this.getAttackTarget());
-				minion1.setCaster(this.getCaster());
-				minion2.setCaster(this.getCaster());
-				// TODO FIXME
-//				minion1.setLifetime((int)(WizardryGolemsSpells.summon_magma_golem.getProperty(MINION_LIFETIME).floatValue()));
-//				minion2.setLifetime((int)(WizardryGolemsSpells.summon_magma_golem.getProperty(MINION_LIFETIME).floatValue()));
+		if (!this.world.isRemote && !this.isChild()) {
+
+			for (int i = 0; i < 2; i++) {
+
+				EntityMagmaGolemMinion childGolem = new EntityMagmaGolemMinion(this.world, true);
+
+				// copy attack target info
+				if (this.getAttackTarget() != null) {
+					childGolem.setAttackTarget(this.getAttackTarget());
+				}
+
+				// set lifetime and caster
+				childGolem.setLifetime((int)(WizardryGolemsSpells.fire_golemancy.getProperty(MINION_LIFETIME).floatValue()));
+				childGolem.setCaster(this.getCaster());
+
+				// set location
+				childGolem.setLocationAndAngles(this.posX + rand.nextDouble() - 0.5D, this.posY, this.posZ + rand.nextDouble() - 0.5D,
+						this.rotationYaw + rand.nextInt(20) - 10, 0);
+
+				// spawn the entities
+				this.getEntityWorld().spawnEntity(childGolem);
 			}
-			// set location
-			minion1.setLocationAndAngles(this.posX + rand.nextDouble() - 0.5D, this.posY, this.posZ + rand.nextDouble() - 0.5D,
-					this.rotationYaw + rand.nextInt(20) - 10, 0);
-			minion2.setLocationAndAngles(this.posX + rand.nextDouble() - 0.5D, this.posY, this.posZ + rand.nextDouble() - 0.5D,
-					this.rotationYaw + rand.nextInt(20) - 10, 0);
-			// spawn the entities
-			this.getEntityWorld().spawnEntity(minion1);
-			this.getEntityWorld().spawnEntity(minion2);
+
 		}
 
 		super.setDead();
@@ -152,41 +148,35 @@ public class EntityMagmaGolemMinion extends EntityGolemBaseMinion implements ISu
 	 * For example, zombies and skeletons use this to react to sunlight and start to
 	 * burn.
 	 */
-	@Override
-	public void onLivingUpdate() {
-		super.onLivingUpdate();
-		// take damage from water/rain
-		if (this.isHurtByWater && this.isWet()) {
-			this.attackEntityFrom(DamageSource.DROWN, 0.5F);
-		}
-		// check the cobblestone-melting math
-		if (this.allowMelting && !this.isChild()) {
-			final int x = MathHelper.floor(this.posX);
-			final int y = MathHelper.floor(this.posY - 0.20000000298023224D);
-			final int z = MathHelper.floor(this.posZ);
-			final BlockPos below = new BlockPos(x, y, z);
-			final Block b1 = this.world.getBlockState(below).getBlock();
-
-			if (x == this.stillX && z == this.stillZ) {
-				// check if it's been holding still long enough AND on top of cobblestone
-				if (++this.ticksStandingStill >= this.meltDelay && b1 == Blocks.COBBLESTONE && rand.nextInt(16) == 0) {
-					IBlockState replace = Blocks.MAGMA.getDefaultState();
-					this.world.setBlockState(below, replace, 3);
-					this.ticksStandingStill = 0;
-				}
-			} else {
-				this.ticksStandingStill = 0;
-				this.stillX = x;
-				this.stillZ = z;
-			}
-		}
-	}
-
-	@Override
-	public void onUpdate() {
-		super.onUpdate();
-		this.updateDelegate();
-	}
+//	@Override
+//	public void onLivingUpdate() {
+//		super.onLivingUpdate();
+//		// take damage from water/rain
+//		if (this.isHurtByWater && this.isWet()) {
+//			this.attackEntityFrom(DamageSource.DROWN, 0.5F);
+//		}
+//		// check the cobblestone-melting math
+//		if (this.allowMelting && !this.isChild()) {
+//			final int x = MathHelper.floor(this.posX);
+//			final int y = MathHelper.floor(this.posY - 0.20000000298023224D);
+//			final int z = MathHelper.floor(this.posZ);
+//			final BlockPos below = new BlockPos(x, y, z);
+//			final Block b1 = this.world.getBlockState(below).getBlock();
+//
+//			if (x == this.stillX && z == this.stillZ) {
+//				// check if it's been holding still long enough AND on top of cobblestone
+//				if (++this.ticksStandingStill >= this.meltDelay && b1 == Blocks.COBBLESTONE && rand.nextInt(16) == 0) {
+//					IBlockState replace = Blocks.MAGMA.getDefaultState();
+//					this.world.setBlockState(below, replace, 3);
+//					this.ticksStandingStill = 0;
+//				}
+//			} else {
+//				this.ticksStandingStill = 0;
+//				this.stillX = x;
+//				this.stillZ = z;
+//			}
+//		}
+//	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -197,19 +187,6 @@ public class EntityMagmaGolemMinion extends EntityGolemBaseMinion implements ISu
 	@Override
 	public SoundEvent getGolemSound() {
 		return SoundEvents.BLOCK_STONE_STEP;
-	}
-
-	@Override
-	public void onSpawn() {
-		if (world.isRemote) {
-//			spawnParticle();
-		}
-
-	}
-
-	@Override
-	public void onDespawn() {
-
 	}
 
 	@Override
@@ -224,30 +201,4 @@ public class EntityMagmaGolemMinion extends EntityGolemBaseMinion implements ISu
 	public int getAnimationColour(float animationProgress) {
 		return 0x923807;
 	}
-
-	public void spawnParticle() {
-		for (int i = 0; i < 100; i++) {
-			float r = world.rand.nextFloat();
-			double speed = 0.02 / r * (1 + world.rand.nextDouble());//(world.rand.nextBoolean() ? 1 : -1) * (0.05 + 0.02 * world.rand.nextDouble());
-			ParticleBuilder.create(ParticleBuilder.Type.MAGIC_FIRE)
-					.pos(this.posX, this.posY + world.rand.nextDouble() * 3, this.posZ)
-					.vel(0, 0, 0)
-					.scale(2)
-					.time(40 + world.rand.nextInt(10))
-					.spin(world.rand.nextDouble() * (2) + 0.5, speed)
-					.spawn(world);
-		}
-
-		for (int i = 0; i < 60; i++) {
-			float r = world.rand.nextFloat();
-			double speed = 0.02 / r * (1 + world.rand.nextDouble());//(world.rand.nextBoolean() ? 1 : -1) * (0.05 + 0.02 * world.rand.nextDouble());
-			ParticleBuilder.create(ParticleBuilder.Type.CLOUD)
-					.pos(this.posX, this.posY + world.rand.nextDouble() * 3, this.posZ)
-					.clr(DrawingUtils.mix(DrawingUtils.mix(0xffbe00, 0xff3600, r / 0.6f), 0x222222, (r - 0.6f) / 0.4f))
-					.spin(r * (2) + 0.5, speed)
-					.spawn(world);
-		}
-
-	}
-
 }

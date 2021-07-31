@@ -1,6 +1,5 @@
 package com.windanesz.wizardrygolems.entity.living;
 
-import com.golems.entity.EntityFurnaceGolem;
 import com.golems.items.ItemBedrockGolem;
 import com.golems.main.ExtraGolems;
 import com.golems.util.GolemNames;
@@ -11,7 +10,6 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -32,11 +30,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 /**
- * Based on {@link com.golems.entity.EntityStrawGolem} - Author: skyjay1
+ * Based on {@link com.golems.entity.EntityFurnaceGolem} - Author: skyjay1
  * Author: WinDanesz
  */
-public class EntityFurnaceGolemMinion extends EntityColorizedGolemMinion {
-	private static final DataParameter<Integer> FUEL = EntityDataManager.createKey(EntityFurnaceGolem.class,
+public class EntityFurnaceGolemMinion extends EntityFireGolemMinion {
+
+	private static final DataParameter<Integer> FUEL = EntityDataManager.createKey(EntityFurnaceGolemMinion.class,
 			DataSerializers.VARINT);
 	private static final String KEY_FUEL = "FuelRemaining";
 
@@ -47,23 +46,11 @@ public class EntityFurnaceGolemMinion extends EntityColorizedGolemMinion {
 	public static final int MAX_FUEL = 102400;
 	public final int fuelBurnFactor;
 
-	public EntityFurnaceGolemMinion(World world) {
+	public EntityFurnaceGolemMinion(final World world) {
 		super(world);
 		fuelBurnFactor = Math.max(1, getConfig(this).getInt(FUEL_FACTOR));
 		this.setImmuneToFire(true);
-		this.addHealItem(new ItemStack(Blocks.COBBLESTONE), 0.25D);
 		this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0D);
-	}
-
-	@Override
-	public void onUpdate() {
-		super.onUpdate();
-		this.updateDelegate();
-	}
-
-	@Override
-	protected ResourceLocation applyTexture() {
-		return makeTexture(ExtraGolems.MODID, GolemNames.FURNACE_GOLEM);
 	}
 
 	@Override
@@ -143,6 +130,11 @@ public class EntityFurnaceGolemMinion extends EntityColorizedGolemMinion {
 		ItemStack stack = player.getHeldItem(hand);
 		int burnTime = getBurnAmount(stack) * (player.isSneaking() ? stack.getCount() : 1);
 		if (burnTime > 0 && (getFuel() + burnTime) <= MAX_FUEL) {
+
+			if (getFuelPercentage() > 0) {
+				// = it wasn't the initial fuel piece
+				setLifetime(getLifetime() + 200);
+			}
 			// add the fuel
 			this.addFuel(burnTime);
 			// reduce the itemstack
@@ -178,6 +170,13 @@ public class EntityFurnaceGolemMinion extends EntityColorizedGolemMinion {
 	@Override
 	public ResourceLocation getTextureType() {
 		return hasFuel() ? LIT : UNLIT;
+	}
+
+	@Override
+	protected ResourceLocation applyTexture() {
+		// apply TEMPORARY texture to avoid NPE. Actual texture is first applied in
+		// onLivingUpdate
+		return makeTexture(ExtraGolems.MODID, GolemNames.CLAY_GOLEM);
 	}
 
 	@Override
@@ -342,7 +341,7 @@ public class EntityFurnaceGolemMinion extends EntityColorizedGolemMinion {
 			// golem.setRevengeTarget(null);
 			golem.getNavigator().clearPath();
 			golem.prevRotationYaw = -15F;
-			//			golem.rot(golem.prevRotationYaw, prevRotationYaw);
+			golem.setRotation(golem.prevRotationYaw, prevRotationYaw);
 			// set looking down
 			final double lookX = golem.getLookVec().x;
 			final double lookY = Math.toRadians(-15D);

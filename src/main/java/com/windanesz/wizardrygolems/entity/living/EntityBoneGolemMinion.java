@@ -17,12 +17,6 @@ public class EntityBoneGolemMinion extends EntityGolemBaseMinion {
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.30D);
 	}
 
-	@Override
-	public void onUpdate(){
-		super.onUpdate();
-		this.updateDelegate();
-	}
-
 	protected ResourceLocation applyTexture() {
 		return makeTexture(ExtraGolems.MODID, GolemNames.BONE_GOLEM + "_skeleton");
 	}

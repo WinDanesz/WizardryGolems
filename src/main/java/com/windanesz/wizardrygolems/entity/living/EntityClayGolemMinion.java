@@ -14,12 +14,6 @@ public class EntityClayGolemMinion extends EntityEarthGolemMinion {
 	}
 
 	@Override
-	public void onUpdate(){
-		super.onUpdate();
-		this.updateDelegate();
-	}
-
-	@Override
 	protected ResourceLocation applyTexture() {
 		return makeTexture(ExtraGolems.MODID, GolemNames.CLAY_GOLEM);
 	}

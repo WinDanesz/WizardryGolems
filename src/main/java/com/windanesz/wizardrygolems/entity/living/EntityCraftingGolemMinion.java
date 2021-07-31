@@ -46,12 +46,6 @@ public class EntityCraftingGolemMinion extends EntityGolemBaseMinion {
 	}
 
 	@Override
-	public void onUpdate(){
-		super.onUpdate();
-		this.updateDelegate();
-	}
-
-	@Override
 	public SoundEvent getGolemSound() {
 		return SoundEvents.BLOCK_WOOD_STEP;
 	}

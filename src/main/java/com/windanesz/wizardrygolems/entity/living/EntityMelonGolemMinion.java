@@ -21,12 +21,6 @@ public class EntityMelonGolemMinion extends EntityEarthGolemMinion {
 	protected float particleCount = 2;
 
 	@Override
-	public void onUpdate(){
-		super.onUpdate();
-		this.updateDelegate();
-	}
-
-	@Override
 	protected ResourceLocation applyTexture() {
 		return makeTexture(ExtraGolems.MODID, GolemNames.MELON_GOLEM);
 	}

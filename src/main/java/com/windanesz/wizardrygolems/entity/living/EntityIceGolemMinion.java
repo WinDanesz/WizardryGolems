@@ -68,12 +68,6 @@ public class EntityIceGolemMinion extends EntityGolemBaseMinion {
 	}
 
 	@Override
-	public void onUpdate() {
-		super.onUpdate();
-		this.updateDelegate();
-	}
-
-	@Override
 	public void onSuccessfulAttack(EntityLivingBase target) {
 		if (target instanceof EntityLivingBase) {
 			target.addPotionEffect(new PotionEffect(WizardryPotions.frost, 60, 1));

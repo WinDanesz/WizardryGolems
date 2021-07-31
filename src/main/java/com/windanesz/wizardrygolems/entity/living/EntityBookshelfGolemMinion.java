@@ -4,17 +4,13 @@ import com.golems.main.ExtraGolems;
 import com.golems.util.GolemConfigSet;
 import com.golems.util.GolemNames;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class EntityBookshelfGolemMinion extends EntityGolemBaseMinion {
 
@@ -26,8 +22,6 @@ public class EntityBookshelfGolemMinion extends EntityGolemBaseMinion {
 	public EntityBookshelfGolemMinion(World world) {
 		super(world);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.29D);
-		this.addHealItem(new ItemStack(Items.BOOK), 0.25D);
-		this.addHealItem(new ItemStack(Blocks.PLANKS, 1, OreDictionary.WILDCARD_VALUE), 0.25D);
 
 	}
 
@@ -44,12 +38,6 @@ public class EntityBookshelfGolemMinion extends EntityGolemBaseMinion {
 			final int len = potion.isInstant() ? 1 : 200 + 100 * (1 + rand.nextInt(5));
 			this.addPotionEffect(new PotionEffect(potion, len, rand.nextInt(2)));
 		}
-	}
-
-	@Override
-	public void onUpdate(){
-		super.onUpdate();
-		this.updateDelegate();
 	}
 
 	@Override

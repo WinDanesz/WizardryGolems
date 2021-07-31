@@ -20,9 +20,13 @@ public final class WizardryGolemsModels {
 
 	@SubscribeEvent
 	public static void register(ModelRegistryEvent event) {
+
+		// -------------------- Other --------------------
 		registerItemModel(WizardryGolemsItems.golemancy_spell_book);
 		registerItemModel(WizardryGolemsItems.golemancy_scroll);
 
+		// -------------------- Ring --------------------
+		// Earth
 		registerItemModel(WizardryGolemsItems.ring_ancient_emperor);
 		registerItemModel(WizardryGolemsItems.ring_engraved_concrete);
 		registerItemModel(WizardryGolemsItems.ring_obsidian);
@@ -31,11 +35,29 @@ public final class WizardryGolemsModels {
 		registerItemModel(WizardryGolemsItems.ring_grass);
 		registerItemModel(WizardryGolemsItems.ring_glistering);
 
+		// Fire
+		registerItemModel(WizardryGolemsItems.ring_charcoal);
+		registerItemModel(WizardryGolemsItems.ring_smoldering);
+		registerItemModel(WizardryGolemsItems.ring_flame_trail);
+		registerItemModel(WizardryGolemsItems.ring_fire_golem_duration);
+		registerItemModel(WizardryGolemsItems.ring_flame_golem);
+
+		// -------------------- Amulet --------------------
+		// Earth
 		registerItemModel(WizardryGolemsItems.amulet_gaia);
 		registerItemModel(WizardryGolemsItems.amulet_deathweed);
 		registerItemModel(WizardryGolemsItems.amulet_snare);
 
+		// Fire
+		registerItemModel(WizardryGolemsItems.amulet_steaming_netherrack);
+
+		// -------------------- Charm --------------------
+		// Earth
 		registerItemModel(WizardryGolemsItems.charm_dried_mushroom);
+
+		// Fire
+		registerItemModel(WizardryGolemsItems.charm_fire_golemancy_potency);
+		registerItemModel(WizardryGolemsItems.charm_ifrit_bottle);
 
 	}
 

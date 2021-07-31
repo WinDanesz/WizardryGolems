@@ -13,12 +13,6 @@ public class EntityConcreteGolemMinion extends EntityEarthGolemMinion {
 	}
 
 	@Override
-	public void onUpdate(){
-		super.onUpdate();
-		this.updateDelegate();
-	}
-
-	@Override
 	protected ResourceLocation applyTexture() {
 		return makeTexture(WizardryGolems.MODID, "golem_concrete");
 	}

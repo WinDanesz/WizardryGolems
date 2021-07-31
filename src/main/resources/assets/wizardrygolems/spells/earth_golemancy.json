@@ -14,7 +14,7 @@
   "element": "earth",
   "type": "minion",
   "cost": 50,
-  "chargeup": 50,
+  "chargeup": 30,
   "cooldown": 260,
   "base_properties": {
     "minion_lifetime": 600,

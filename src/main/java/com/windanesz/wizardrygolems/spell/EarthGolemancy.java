@@ -251,7 +251,8 @@ public class EarthGolemancy<T extends EntityLiving & ISummonedCreature> extends 
 
 		this.addGolemExtras(golem, pos, caster, modifiers);
 
-		world.spawnEntity(golem);
+		if (!world.isRemote)
+			world.spawnEntity(golem);
 	}
 
 	/**

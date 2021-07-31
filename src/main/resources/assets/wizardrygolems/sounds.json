@@ -1,3 +1,4 @@
 {
-    "spell.earth_golemancy": {"category": "spells", "sounds": ["wizardrygolems:earth_golemancy"]}
+    "spell.earth_golemancy": {"category": "spells", "sounds": ["wizardrygolems:earth_golemancy"]},
+    "flame_golem_sound":     {"category": "spells", "sounds": ["wizardrygolems:flame_golem_sound"]}
 }

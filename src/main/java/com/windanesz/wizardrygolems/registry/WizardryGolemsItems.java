@@ -30,27 +30,45 @@ public final class WizardryGolemsItems {
 	@SuppressWarnings("ConstantConditions")
 	private static <T> T placeholder() { return null; }
 
+	// -------------------- Other --------------------
 	public static final Item golemancy_spell_book = placeholder();
 	public static final Item golemancy_scroll = placeholder();
 
-	// ====================== Artefacts ======================
+	// -------------------- Ring --------------------
+	// Earth
+	public static final Item ring_ancient_emperor = placeholder();
+	public static final Item ring_engraved_concrete = placeholder();
+	public static final Item ring_obsidian = placeholder();
+	public static final Item ring_sandstone = placeholder();
+	public static final Item ring_forest_guardian = placeholder();
+	public static final Item ring_grass = placeholder();
+	public static final Item ring_glistering = placeholder();
 
-	/// ring
-		public static final Item ring_ancient_emperor = placeholder();
-		public static final Item ring_engraved_concrete = placeholder();
-		public static final Item ring_obsidian = placeholder();
-		public static final Item ring_sandstone = placeholder();
-		public static final Item ring_forest_guardian = placeholder();
-		public static final Item ring_grass = placeholder();
-		public static final Item ring_glistering = placeholder();
+	// Fire
+	public static final Item ring_charcoal = placeholder();
+	public static final Item ring_smoldering = placeholder();
+	public static final Item ring_flame_trail = placeholder();
+	public static final Item ring_fire_golem_duration = placeholder();
+	public static final Item ring_flame_golem = placeholder();
 
-	/// amulet
-		public static final Item amulet_gaia = placeholder();
-		public static final Item amulet_deathweed = placeholder();
-		public static final Item amulet_snare = placeholder();
+	// -------------------- Amulet --------------------
+	// Earth
+	public static final Item amulet_gaia = placeholder();
+	public static final Item amulet_deathweed = placeholder();
+	public static final Item amulet_snare = placeholder();
 
-	/// charm
-		public static final Item charm_dried_mushroom = placeholder();
+	// Fire
+	public static final Item amulet_steaming_netherrack = placeholder();
+
+	// -------------------- Charm --------------------
+
+	// Earth
+	public static final Item charm_dried_mushroom = placeholder();
+
+	// Fire
+	public static final Item charm_fire_golemancy_potency = placeholder();
+	public static final Item charm_ifrit_bottle = placeholder();
+
 
 	// below registry methods are courtesy of EB
 	public static void registerItem(IForgeRegistry<Item> registry, String name, Item item) {
@@ -89,6 +107,7 @@ public final class WizardryGolemsItems {
 		registerItem(registry, "golemancy_spell_book", new ItemSpellBook());
 		registerItem(registry, "golemancy_scroll", new ItemScroll());
 
+		// Earth
 		registerItem(registry, "ring_sandstone", new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.RING, Element.EARTH));
 		registerItem(registry, "ring_grass", new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.RING, Element.EARTH));
 		registerItem(registry, "ring_engraved_concrete", new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.RING, Element.EARTH));
@@ -102,6 +121,18 @@ public final class WizardryGolemsItems {
 		registerItem(registry, "amulet_deathweed", new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.AMULET, Element.EARTH));
 
 		registerItem(registry, "charm_dried_mushroom", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.AMULET, Element.EARTH));
+
+		// Fire
+		registerItem(registry, "ring_charcoal", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
+		registerItem(registry, "ring_smoldering", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
+		registerItem(registry, "ring_flame_trail", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
+		registerItem(registry, "ring_fire_golem_duration", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
+		registerItem(registry, "ring_flame_golem", new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.RING, Element.FIRE));
+
+		registerItem(registry, "amulet_steaming_netherrack", new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.AMULET, Element.FIRE));
+
+		registerItem(registry, "charm_fire_golemancy_potency", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.CHARM, Element.FIRE));
+		registerItem(registry, "charm_ifrit_bottle", new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.CHARM, Element.FIRE));
 
 	}
 

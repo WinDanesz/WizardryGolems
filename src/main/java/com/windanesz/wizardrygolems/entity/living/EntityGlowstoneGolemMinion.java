@@ -9,9 +9,7 @@ import com.golems.util.GolemLookup;
 import com.golems.util.GolemNames;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
@@ -36,7 +34,6 @@ public class EntityGlowstoneGolemMinion extends EntityGolemBaseMinion {
 		this.setCanTakeFallDamage(true);
 		this.setCanSwim(true);
 		this.setLootTableLoc(GolemNames.GLOWSTONE_GOLEM);
-		this.addHealItem(new ItemStack(Items.GLOWSTONE_DUST), 0.25D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.26D);
 	}
 
@@ -54,12 +51,6 @@ public class EntityGlowstoneGolemMinion extends EntityGolemBaseMinion {
 		GolemConfigSet cfg = getConfig(this);
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(cfg.getBaseAttack());
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(cfg.getMaxHealth());
-	}
-
-	@Override
-	public void onUpdate(){
-		super.onUpdate();
-		this.updateDelegate();
 	}
 
 	@Override

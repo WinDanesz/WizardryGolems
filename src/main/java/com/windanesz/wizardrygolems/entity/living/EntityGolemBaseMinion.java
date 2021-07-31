@@ -3,10 +3,12 @@ package com.windanesz.wizardrygolems.entity.living;
 import com.golems.entity.GolemBase;
 import electroblob.wizardry.Wizardry;
 import electroblob.wizardry.entity.living.ISummonedCreature;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.ITextComponent;
@@ -102,6 +104,23 @@ public abstract class EntityGolemBaseMinion extends GolemBase implements ISummon
 
 	private void spawnParticleEffect() {
 
+	}
+
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		this.updateDelegate();
+	}
+
+	@Override
+	public void setRevengeTarget(EntityLivingBase entity){
+		if(this.shouldRevengeTarget(entity)) super.setRevengeTarget(entity);
+	}
+
+	protected boolean processInteract(EntityPlayer player, EnumHand hand){
+		// In this case, the delegate method determines whether super is called.
+		// Rather handily, we can make use of Java's short-circuiting method of evaluating OR statements.
+		return this.interactDelegate(player, hand) || super.processInteract(player, hand);
 	}
 
 	/// ExtraGolems methods ///

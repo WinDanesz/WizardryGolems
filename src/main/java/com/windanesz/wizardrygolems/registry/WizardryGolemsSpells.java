@@ -2,7 +2,9 @@ package com.windanesz.wizardrygolems.registry;
 
 import com.windanesz.wizardrygolems.WizardryGolems;
 import com.windanesz.wizardrygolems.entity.living.EntityClayGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityNetherBrickGolemMinion;
 import com.windanesz.wizardrygolems.spell.EarthGolemancy;
+import com.windanesz.wizardrygolems.spell.FireGolemancy;
 import electroblob.wizardry.spell.Spell;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
@@ -20,6 +22,7 @@ public final class WizardryGolemsSpells {
 	private WizardryGolemsSpells() {} // no instances
 
 	public static final Spell earth_golemancy = placeholder();
+	public static final Spell fire_golemancy = placeholder();
 
 
 	@Nonnull
@@ -37,6 +40,7 @@ public final class WizardryGolemsSpells {
 
 		// 1.0.0 Spells
 		registry.register(new EarthGolemancy<>(WizardryGolems.MODID, "earth_golemancy", EntityClayGolemMinion::new));
+		registry.register(new FireGolemancy<>(WizardryGolems.MODID, "fire_golemancy", EntityNetherBrickGolemMinion::new));
 
 	}
 }

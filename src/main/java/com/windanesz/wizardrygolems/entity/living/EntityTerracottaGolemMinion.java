@@ -23,12 +23,6 @@ public class EntityTerracottaGolemMinion extends EntityEarthGolemMinion {
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(5);
 	}
 
-	@Override
-	public void onUpdate() {
-		super.onUpdate();
-		this.updateDelegate();
-	}
-
 	protected ResourceLocation applyTexture() {
 		return makeTexture(ExtraGolems.MODID, GolemNames.TERRACOTTA_GOLEM);
 	}

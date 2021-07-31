@@ -14,12 +14,6 @@ public class EntitySandstoneGolemMinion extends EntityGolemBaseMinion {
 	}
 
 	@Override
-	public void onUpdate(){
-		super.onUpdate();
-		this.updateDelegate();
-	}
-
-	@Override
 	protected ResourceLocation applyTexture() {
 		return makeTexture(ExtraGolems.MODID, GolemNames.SANDSTONE_GOLEM);
 	}

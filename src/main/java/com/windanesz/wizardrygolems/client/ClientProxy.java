@@ -9,6 +9,7 @@ import com.windanesz.wizardrygolems.entity.living.EntityClayGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityCoalGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityConcreteGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityCraftingGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityFlameGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityFurnaceGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityGlowstoneGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityGoldGolemMinion;
@@ -17,6 +18,7 @@ import com.windanesz.wizardrygolems.entity.living.EntityLeafGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityMagmaGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityMelonGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityMushroomGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityNetherBrickGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityOakWoodenGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityObsidianGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityPrismarineGolemMinion;
@@ -38,7 +40,7 @@ public class ClientProxy extends CommonProxy {
 
 		// CREATURES
 
-		registerEntityRender(EntityMagmaGolemMinion.class);
+		// Earth Golemancy
 		registerEntityRender(EntityLeafGolemMinion.class);
 		registerEntityRender(EntityClayGolemMinion.class);
 		registerEntityRender(EntityMushroomGolemMinion.class);
@@ -46,24 +48,27 @@ public class ClientProxy extends CommonProxy {
 		registerEntityRender(EntityObsidianGolemMinion.class);
 		registerEntityRender(EntitySandstoneGolemMinion.class);
 		registerEntityRender(EntityConcreteGolemMinion.class);
-		registerEntityRender(EntityBookshelfGolemMinion.class);
-		registerEntityRender(EntityGoldGolemMinion.class);
 		registerEntityRender(EntityTerracottaGolemMinion.class);
+		registerEntityRender(EntityStrawThornsGolemMinion.class);
+
+		registerEntityRender(EntityOakWoodenGolemMinion.class);
+
+		// Fire Golemancy
+		registerEntityRender(EntityNetherBrickGolemMinion.class);
+		registerEntityRender(EntityMagmaGolemMinion.class);
+		registerEntityRender(EntityFurnaceGolemMinion.class);
+		registerEntityRender(EntityFlameGolemMinion.class);
+
+		// TODO
 		registerEntityRender(EntityCoalGolemMinion.class);
+		registerEntityRender(EntityPrismarineGolemMinion.class);
 		registerEntityRender(EntityBoneGolemMinion.class);
 		registerEntityRender(EntityIceGolemMinion.class);
 		registerEntityRender(EntityCraftingGolemMinion.class);
 		registerEntityRender(EntityGlowstoneGolemMinion.class);
-		registerEntityRender(EntityPrismarineGolemMinion.class);
 		registerEntityRender(EntityTNTGolemMinion.class);
-		registerEntityRender(EntityStrawThornsGolemMinion.class);
-
-		registerEntityRender(EntityOakWoodenGolemMinion.class);
-		registerEntityRender(EntityFurnaceGolemMinion.class);
-
-		// imbuement stuff..
-		// RenderingRegistry.registerEntityRenderingHandler(EntityImbuementTriggerer.class, RenderBlank::new);
-
+		registerEntityRender(EntityGoldGolemMinion.class);
+		registerEntityRender(EntityBookshelfGolemMinion.class);
 	}
 
 	/**

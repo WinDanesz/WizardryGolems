@@ -96,9 +96,8 @@ public class FireGolemancy<T extends EntityLiving & ISummonedCreature> extends S
 						hasArtefact = true;
 						break;
 					} else if (artefact == WizardryGolemsItems.ring_flame_golem) {
-						if (!player.getHeldItem(hand).isEmpty() && (!(player.getHeldItem(hand).getItem() instanceof ItemWand)
-								|| (player.getHeldItem(hand).getItem() instanceof ItemWand && ((ItemWand) player.getHeldItem(hand).getItem()).tier == Tier.MASTER
-								&& ((ItemWand) player.getHeldItem(hand).getItem()).element == Element.FIRE))) {
+						if (!player.getHeldItem(hand).isEmpty() && (player.getHeldItem(hand).getItem() instanceof ItemWand && ((ItemWand) player.getHeldItem(hand).getItem()).tier == Tier.MASTER
+								&& ((ItemWand) player.getHeldItem(hand).getItem()).element == Element.FIRE)) {
 							// Flame Golem
 							EntityGolem golemi = new EntityFlameGolemMinion(world);
 							spawnGolem(golemi, player, world, modifiers);

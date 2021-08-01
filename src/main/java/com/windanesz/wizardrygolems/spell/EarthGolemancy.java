@@ -117,9 +117,8 @@ public class EarthGolemancy<T extends EntityLiving & ISummonedCreature> extends 
 
 						// ObsidianGolem
 					} else if (artefact == WizardryGolemsItems.ring_obsidian) {
-						if (!player.getHeldItem(hand).isEmpty() && (!(player.getHeldItem(hand).getItem() instanceof ItemWand)
-								|| (player.getHeldItem(hand).getItem() instanceof ItemWand && ((ItemWand) player.getHeldItem(hand).getItem()).tier == Tier.MASTER
-								&& ((ItemWand) player.getHeldItem(hand).getItem()).element == Element.EARTH))) {
+						if (!player.getHeldItem(hand).isEmpty() && (player.getHeldItem(hand).getItem() instanceof ItemWand && ((ItemWand) player.getHeldItem(hand).getItem()).tier == Tier.MASTER
+								&& ((ItemWand) player.getHeldItem(hand).getItem()).element == Element.EARTH)) {
 							this.golemCount = 1;
 							int count = 1;
 							for (int i = 0; i < count; i++) {

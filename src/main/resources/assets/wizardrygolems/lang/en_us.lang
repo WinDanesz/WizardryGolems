@@ -84,7 +84,7 @@ item.wizardrygolems\:ring_flame_trail.desc=Fire Golemancy minions set the ground
 item.wizardrygolems\:ring_charcoal.name=Charcoal Ring
 item.wizardrygolems\:ring_charcoal.desc=Fire Golemancy will summon two Furnace Golems. The Golems must be fed with coal to operate. Every additional fuel after the first one increases the golem's lifetime by 10 seconds
 
-item.wizardrygolems\:ring_fire_golem_duration=Ring of Fire Golemancy
+item.wizardrygolems\:ring_fire_golem_duration.name=Ring of Fire Golemancy
 item.wizardrygolems\:ring_fire_golem_duration.desc=Your Fire Golems have twice as long lifetime
 
 item.wizardrygolems\:ring_flame_golem.name=Sunstone Ring

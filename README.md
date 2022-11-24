@@ -1,5 +1,4 @@
-
-# Wizardry Golems &nbsp; ![Mod Build](https://github.com/WinDanesz/WizardryGolems/workflows/Mod%20Build/badge.svg) [![Curseforge](http://cf.way2muchnoise.eu/full_wizardry-golems_downloads.svg)](https://minecraft.curseforge.com/projects/wizardry-golems) [![Curseforge](http://cf.way2muchnoise.eu/versions/For%20MC_wizardry-golems_all.svg)](http://www.curseforge.com/minecraft/mc-mods/wizardry-golems/files)
+# WizardryGolems &nbsp; [![Build Mod](https://github.com/WinDanesz/WizardryGolems/actions/workflows/gradle.yml/badge.svg)](https://github.com/WinDanesz/WizardryGolems/actions/workflows/gradle.yml) [![Curseforge](http://cf.way2muchnoise.eu/full_wizardry-golems_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/wizardry-golems) [![Curseforge](http://cf.way2muchnoise.eu/versions/608287.svg)](http://www.curseforge.com/minecraft/mc-mods/wizardry-golems/files) [![Discord](https://img.shields.io/discord/544897694448091146?color=7289DA&label=Discord)](https://discord.gg/wuSsgKwAKv)
 A spell addon pack for Electroblob's Wizardry
 
 Wizardry Golems is a Minecraft modification which adds magical content based on skyjay1's Extra Golems mod to your game. The mod is a spell pack and item addon mod for Electroblob's Wizardry.

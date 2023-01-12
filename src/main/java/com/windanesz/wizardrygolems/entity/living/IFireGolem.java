@@ -61,9 +61,10 @@ public interface IFireGolem {
 
 			EntityPlayer player = (EntityPlayer) minion.getCaster();
 			for (ItemArtefact artefact : ItemArtefact.getActiveArtefacts(player)) {
-				if (artefact == WizardryGolemsItems.amulet_steaming_netherrack) {}
-				boolean terrainDamage = EntityUtils.canDamageBlocks(player, player.world);
-				minion.world.newExplosion(null, minion.posX, minion.posY + 1, minion.posZ, 1, terrainDamage, terrainDamage);
+				if (artefact == WizardryGolemsItems.amulet_steaming_netherrack && !minion.world.isRemote) {
+					boolean terrainDamage = EntityUtils.canDamageBlocks(player, player.world);
+					minion.world.newExplosion(null, minion.posX, minion.posY + 1, minion.posZ, 1, terrainDamage, terrainDamage);
+				}
 			}
 		}
 	}

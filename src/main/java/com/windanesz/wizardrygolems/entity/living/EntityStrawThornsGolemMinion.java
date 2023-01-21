@@ -20,31 +20,27 @@ import net.minecraft.world.World;
  */
 public class EntityStrawThornsGolemMinion extends EntityEarthGolemMinion {
 
-	public static final String ALLOW_SPECIAL = "Allow Special: Crop Boost";
-	private int range;
-	private int boostFreq;
-	private boolean allowed;
+	private final int range;
 
 	public EntityStrawThornsGolemMinion(World world) {
 		super(world);
 		this.setCanSwim(true);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.35D);
-		this.boostFreq = 40;
-		this.boostFreq += this.rand.nextInt(Math.max(10, this.boostFreq / 2));
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20);
+		int boostFreq = 40;
+		boostFreq += this.rand.nextInt(Math.max(10, boostFreq / 2));
 		this.range = 2;
-		this.allowed = getConfig(this).getBoolean(ALLOW_SPECIAL);
 	}
 
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		// look for crops to boost
-		if (this.allowed && this.rand.nextInt(40) == 0) {
-			if (!world.isRemote) { tryBoostCrop(); }
+		if (this.rand.nextInt(40) == 0) {
+			if (!world.isRemote) { spawnThorns(); }
 		}
 	}
 
-	private boolean tryBoostCrop() {
+	private boolean spawnThorns() {
 		final int variationY = 1;
 		final int x = MathHelper.floor(this.posX);
 		final int y = MathHelper.floor(this.posY);

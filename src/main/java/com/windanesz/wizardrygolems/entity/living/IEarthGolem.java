@@ -16,6 +16,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
@@ -25,7 +26,7 @@ import net.minecraft.world.biome.BiomeProvider;
 
 public interface IEarthGolem {
 
-	default void onDeathDelegate(ISummonedCreature golem) {
+	default void onGolemUpdate(ISummonedCreature golem) {
 		if (golem instanceof EntityGolem && golem.getCaster() != null && golem.getCaster() instanceof EntityPlayer) {
 			EntityGolem entityGolem = (EntityGolem) golem;
 			World world = entityGolem.world;
@@ -61,6 +62,13 @@ public interface IEarthGolem {
 
 				} else if (artefact == WizardryGolemsItems.amulet_snare) {
 					BlockPos pos = entityGolem.getPosition();
+					for(EnumFacing direction : EnumFacing.HORIZONTALS){
+						BlockPos pos1 = entityGolem.getPosition().offset(direction);
+						if(entityGolem.world.rand.nextBoolean() &&
+								BlockUtils.canBlockBeReplaced(entityGolem.world, pos1) && BlockUtils.canPlaceBlock(entityGolem, entityGolem.world, pos1))
+							entityGolem.world.setBlockState(pos1, WizardryBlocks.snare.getDefaultState());
+					}
+
 					if (BlockUtils.canBlockBeReplaced(entityGolem.world, pos.up())) {
 						if (!entityGolem.world.isRemote) {
 							entityGolem.world.setBlockState(entityGolem.getPosition(), WizardryBlocks.snare.getDefaultState());

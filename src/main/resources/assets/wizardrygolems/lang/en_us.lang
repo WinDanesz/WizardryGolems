@@ -29,8 +29,14 @@ entity.wizardrygolems\:golem_bookshelf_minion.name=Bookshelf Golem Minion
 entity.wizardrygolems\:golem_gold_minion.name=Gold Golem Minion
 entity.wizardrygolems\:golem_coal_minion.name=Coal Golem Minion
 entity.wizardrygolems\:golem_bone_minion.name=Bone Golem Minion
-entity.wizardrygolems\:golem_ice_minion.name=Ice Golem Minion
 entity.wizardrygolems\:golem_crafting_minion.name=Crafting Golem Minion
+
+# ICE
+entity.wizardrygolems\:golem_ice_minion.name=Ice Golem Minion
+entity.wizardrygolems\:golem_packed_ice_minion.name=Packed Ice Golem Minion
+entity.wizardrygolems\:golem_permafrost_minion.name=Permafrost Golem Minion
+entity.wizardrygolems\:golem_snow_minion.name=Snow Golem Minion
+entity.wizardrygolems\:golem_winter_minion.name=Winter Golem
 
 
 # ----------------------------- ITEM -----------------------------
@@ -66,7 +72,7 @@ item.wizardrygolems\:charm_dried_mushroom.name=Dried Mushroom Charm
 item.wizardrygolems\:charm_dried_mushroom.desc=Earth Golemancy summons 3 Mushroom Golems with poisonous attacks
 
 item.wizardrygolems\:amulet_snare.name=Amulet of Brambles
-item.wizardrygolems\:amulet_snare.desc=Earth Golemancy golems leave a Snare trap behind if killed
+item.wizardrygolems\:amulet_snare.desc=Earth Golemancy golems leave 1-5 Snare traps behind if killed
 
 item.wizardrygolems\:amulet_deathweed.name=Deathweed Flower Amulet
 item.wizardrygolems\:amulet_deathweed.desc=10%% chance to activate Forest's Curse when an Earth Golemancy golem is killed (100%% chance in forests)
@@ -94,7 +100,36 @@ item.wizardrygolems\:charm_fire_golemancy_potency.name=Fire Elemental Heart
 item.wizardrygolems\:charm_fire_golemancy_potency.desc=Being near a Fire Golem while holding a Fire Staff will empower the caster's magic
 
 item.wizardrygolems\:charm_ifrit_bottle.name=Sealed Ifrit
-item.wizardrygolems\:charm_ifrit_bottle.desc=Your Fire Golems gain a Fireskin effect. Being near a Fire Golem while holding a Fire Staff will grant you fire resistance
+item.wizardrygolems\:charm_ifrit_bottle.desc=Your Fire Golems gain a Fireskin effect. Being near a Fire Golem while holding a Fire Wand will grant you fire resistance
+
+item.wizardrygolems\:ring_frostbite.name=Ring of Frostbite
+item.wizardrygolems\:ring_frostbite.desc=Your Ice Golemancy golems have 50%% chance to apply Frostbite on hit
+
+item.wizardrygolems\:charm_frost_cloak.name=Frost Cloak
+item.wizardrygolems\:charm_frost_cloak.desc=Your Ice Golems gain an Ice Shroud effect. Being near an Ice Golem while holding an Ice Wand will also grant you the effect
+
+item.wizardrygolems\:ring_permanent_golem.name=Ring of the Golemancer
+item.wizardrygolems\:ring_permanent_golem.desc=Causes your next golem summoned by any golemancy spell to have unlimited lifetime.\nLimited to one entity at a time\n5 minutes cooldown
+
+item.wizardrygolems\:ring_snow_golem.name=Snowbound Ring
+item.wizardrygolems\:ring_snow_golem.desc=Ice Golemancy summons 5 small snow golems
+#\nNearby snow blocks can allow summoning more, up to 8
+
+item.wizardrygolems\:ring_winter_golem.name=Glacier Gem Ring
+item.wizardrygolems\:ring_winter_golem.desc=Ice Golemancy will summon a Winter Golem\nWinter Golems are powerful creatures of ice magic that can imbue their owner's weapon with the power of ice
+
+item.wizardrygolems\:amulet_broken_ice.name=Broken Ice Crystal Amulet
+item.wizardrygolems\:amulet_broken_ice.desc=Ice Golemancy golems have 50%% chance to shatter upon death
+
+item.wizardrygolems\:amulet_jagged_sapphire.name=Jagged Sapphire Amulet
+item.wizardrygolems\:amulet_jagged_sapphire.desc=Ice Golemancy golems have 15%% chance to cast Ice Spikes under their target with each attack
+
+item.wizardrygolems\:charm_frozen_mark.name=Mark of Frozen Domain
+item.wizardrygolems\:charm_frozen_mark.desc=Ice Golemancy golems spawn ice sigils when they are killed
+#item.wizardrygolems\:charm_frozen_mark.desc=Ice Golemancy golems have doubled lifetime and heal over time in cold biomes
+
+item.wizardrygolems\:head_permafrost_crown.name=Permafrost Crown
+item.wizardrygolems\:head_permafrost_crown.desc=Ice Golemancy summons two permafrost golems that leave a trail of permafrost
 
 # SPELLS
 spell.wizardrygolems\:earth_golemancy=Earth Golemancy
@@ -104,4 +139,8 @@ spell.wizardrygolems\:earth_golemancy.low_wand_tier=Only a Master tier Earth Wan
 spell.wizardrygolems\:fire_golemancy=Fire Golemancy
 spell.wizardrygolems\:fire_golemancy.desc=Draw power from the essence of Fire to create golems.
 spell.wizardrygolems\:fire_golemancy.low_wand_tier=Only a Master tier Fire Wand can summon a Flame Golem
+
+spell.wizardrygolems\:ice_golemancy=Ice Golemancy
+spell.wizardrygolems\:ice_golemancy.desc=Draw power from the essence of Ice to create golems.
+spell.wizardrygolems\:ice_golemancy.low_wand_tier=Only a Master tier Ice Wand can summon a Winter Golem
 

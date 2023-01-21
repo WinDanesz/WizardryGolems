@@ -2,6 +2,9 @@ package com.windanesz.wizardrygolems.registry;
 
 import com.windanesz.wizardrygolems.WizardryGolems;
 import com.windanesz.wizardrygolems.item.ItemGolemancyArtefact;
+import com.windanesz.wizardrygolems.item.ItemPermanentGolemRing;
+import com.windanesz.wizardryutils.item.ItemNewArtefact;
+import com.windanesz.wizardryutils.registry.ItemRegistry;
 import electroblob.wizardry.constants.Element;
 import electroblob.wizardry.item.ItemArtefact;
 import electroblob.wizardry.item.ItemScroll;
@@ -44,6 +47,9 @@ public final class WizardryGolemsItems {
 	public static final Item ring_grass = placeholder();
 	public static final Item ring_glistering = placeholder();
 
+	// Generic
+	public static final Item ring_permanent_golem = placeholder();
+
 	// Fire
 	public static final Item ring_charcoal = placeholder();
 	public static final Item ring_smoldering = placeholder();
@@ -69,6 +75,15 @@ public final class WizardryGolemsItems {
 	public static final Item charm_fire_golemancy_potency = placeholder();
 	public static final Item charm_ifrit_bottle = placeholder();
 
+	// Ice
+	public static final Item head_permafrost_crown = placeholder();
+	public static final Item ring_snow_golem = placeholder();
+	public static final Item ring_frostbite = placeholder();
+	public static final Item ring_winter_golem = placeholder();
+	public static final Item amulet_jagged_sapphire = placeholder();
+	public static final Item amulet_broken_ice = placeholder();
+	public static final Item charm_frost_cloak = placeholder();
+	public static final Item charm_frozen_mark = placeholder();
 
 	// below registry methods are courtesy of EB
 	public static void registerItem(IForgeRegistry<Item> registry, String name, Item item) {
@@ -108,35 +123,42 @@ public final class WizardryGolemsItems {
 		registerItem(registry, "golemancy_scroll", new ItemScroll());
 
 		// Earth
-		registerItem(registry, "ring_sandstone", new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.RING, Element.EARTH));
-		registerItem(registry, "ring_grass", new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.RING, Element.EARTH));
-		registerItem(registry, "ring_engraved_concrete", new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.RING, Element.EARTH));
-		registerItem(registry, "ring_forest_guardian", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.EARTH));
-		registerItem(registry, "ring_obsidian", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.EARTH));
-		registerItem(registry, "ring_glistering", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.EARTH));
-		registerItem(registry, "ring_ancient_emperor", new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.RING, Element.EARTH));
+		ItemRegistry.registerItemArtefact(registry, "ring_sandstone", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.RING, Element.EARTH));
+		ItemRegistry.registerItemArtefact(registry, "ring_grass", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.RING, Element.EARTH));
+		ItemRegistry.registerItemArtefact(registry, "ring_engraved_concrete", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.RING, Element.EARTH));
+		ItemRegistry.registerItemArtefact(registry, "ring_forest_guardian", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.EARTH));
+		ItemRegistry.registerItemArtefact(registry, "ring_obsidian", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.EARTH));
+		ItemRegistry.registerItemArtefact(registry, "ring_glistering", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.EARTH));
+		ItemRegistry.registerItemArtefact(registry, "ring_ancient_emperor", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.RING, Element.EARTH));
 
-		registerItem(registry, "amulet_snare", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.AMULET, Element.EARTH));
-		registerItem(registry, "amulet_gaia", new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.AMULET, Element.EARTH));
-		registerItem(registry, "amulet_deathweed", new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.AMULET, Element.EARTH));
-
-		registerItem(registry, "charm_dried_mushroom", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.AMULET, Element.EARTH));
-
+		ItemRegistry.registerItemArtefact(registry, "amulet_snare", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.AMULET, Element.EARTH));
+		ItemRegistry.registerItemArtefact(registry, "amulet_gaia", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.AMULET, Element.EARTH));
+		ItemRegistry.registerItemArtefact(registry, "amulet_deathweed", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.AMULET, Element.EARTH));
+		ItemRegistry.registerItemArtefact(registry, "charm_dried_mushroom", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.AMULET, Element.EARTH));
 		// Fire
-		registerItem(registry, "ring_charcoal", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
-		registerItem(registry, "ring_smoldering", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
-		registerItem(registry, "ring_flame_trail", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
-		registerItem(registry, "ring_fire_golem_duration", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
-		registerItem(registry, "ring_flame_golem", new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.RING, Element.FIRE));
+		ItemRegistry.registerItemArtefact(registry, "ring_charcoal", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
+		ItemRegistry.registerItemArtefact(registry, "ring_smoldering", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
+		ItemRegistry.registerItemArtefact(registry, "ring_flame_trail", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
+		ItemRegistry.registerItemArtefact(registry, "ring_fire_golem_duration", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
+		ItemRegistry.registerItemArtefact(registry, "ring_flame_golem", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.RING, Element.FIRE));
 
-		registerItem(registry, "amulet_steaming_netherrack", new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.AMULET, Element.FIRE));
+		ItemRegistry.registerItemArtefact(registry, "amulet_steaming_netherrack", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.AMULET, Element.FIRE));
 
-		registerItem(registry, "charm_fire_golemancy_potency", new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.CHARM, Element.FIRE));
-		registerItem(registry, "charm_ifrit_bottle", new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.CHARM, Element.FIRE));
+		ItemRegistry.registerItemArtefact(registry, "charm_fire_golemancy_potency", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.CHARM, Element.FIRE));
+		ItemRegistry.registerItemArtefact(registry, "charm_ifrit_bottle", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.CHARM, Element.FIRE));
 
-	}
+		// Generic
+		ItemRegistry.registerItemArtefact(registry, "ring_permanent_golem", WizardryGolems.MODID, new ItemPermanentGolemRing(EnumRarity.EPIC, ItemArtefact.Type.RING, Element.MAGIC));
 
-	public static void registerDispenseBehaviours() {
-		//		BlockDispenser.DISPENSE_BEHAVIOR_REGISTRY.putObject(golemancy_scroll, new BehaviourSpellDispense());
+		// Ice
+		ItemRegistry.registerItemArtefact(registry, "ring_frostbite", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.RING, Element.ICE));
+		ItemRegistry.registerItemArtefact(registry, "ring_snow_golem", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.RING, Element.ICE));
+		ItemRegistry.registerItemArtefact(registry, "ring_winter_golem", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.RING, Element.ICE));
+		ItemRegistry.registerItemArtefact(registry, "amulet_jagged_sapphire", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.AMULET, Element.ICE));
+		ItemRegistry.registerItemArtefact(registry, "amulet_broken_ice", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.AMULET, Element.ICE));
+		ItemRegistry.registerItemArtefact(registry, "charm_frozen_mark", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.CHARM, Element.ICE));
+		ItemRegistry.registerItemArtefact(registry, "charm_frost_cloak", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.CHARM, Element.ICE));
+		ItemRegistry.registerItemArtefact(registry, "head_permafrost_crown", WizardryGolems.MODID, new ItemNewArtefact(EnumRarity.RARE, ItemNewArtefact.Type.HEAD));
+
 	}
 }

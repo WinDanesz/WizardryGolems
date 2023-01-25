@@ -1,5 +1,5 @@
+import groovy.json.JsonOutput
 import org.apache.tools.ant.filters.ReplaceTokens
-import groovy.json.*
 
 buildscript {
     repositories {
@@ -128,6 +128,7 @@ dependencies {
     implementation fg.deobf("curse.maven:ElectroblobsWizardry-${wizardry_projectid}:${wizardry_fileid}")
     implementation fg.deobf("curse.maven:baubles-${baubles_projectid}:${baubles_fileid}")
     implementation fg.deobf("curse.maven:ExtraGolems-${extragolems_projectid}:${extragolems_fileid}")
+    implementation fg.deobf("curse.maven:WizardryUtils-${wizardryutils_projectid}:${wizardryutils_fileid}")
     //implementation "com.blamejared.crafttweaker:CraftTweaker2-MC1120-Main-1.12-4.1.9.6"
     //// Dependencies ////
 }
@@ -331,6 +332,8 @@ task replaceTokens(type: Sync) {
     filter(ReplaceTokens, tokens: [VERSION: version.toString()])
     filter(ReplaceTokens, tokens: [MCVERSION: "${project.mc_version}".toString()])
     filter(ReplaceTokens, tokens: [WIZARDRY_VERSION: "${project.wizardry_version}".toString()])
+    filter(ReplaceTokens, tokens: [WIZARDRY_UTILS_VERSION: "${project.wizardry_utils_version}".toString()])
+    filter(ReplaceTokens, tokens: [GOLEMS_VERSION: "${project.extragolems_version}".toString()])
     into "$buildDir/src"
 }
 

@@ -11,13 +11,13 @@ public class EntityFireGolemMinion extends EntityGolemBaseMinion implements IFir
 
 	@Override
 	public void onDeath(DamageSource cause) {
-		onDeathDelegateFireGolem(this);
+		onDeathDelegate(this);
 		super.onDeath(cause);
 	}
 
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		fireGolemUpdate(this);
+		onGolemUpdate(this);
 	}
 }

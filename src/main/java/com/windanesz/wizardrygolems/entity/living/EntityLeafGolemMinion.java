@@ -80,7 +80,7 @@ public class EntityLeafGolemMinion extends EntityColorizedGolemMinion implements
 
 	@Override
 	public void onDeath(DamageSource cause) {
-		onDeathDelegate(this);
+		onGolemUpdate(this);
 		super.onDeath(cause);
 	}
 

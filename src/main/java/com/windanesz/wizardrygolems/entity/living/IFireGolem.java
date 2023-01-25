@@ -16,7 +16,7 @@ import net.minecraft.util.SoundCategory;
 
 public interface IFireGolem {
 
-	default void fireGolemUpdate(EntityGolemBaseMinion minion) {
+	default void onGolemUpdate(EntityGolemBaseMinion minion) {
 		if (minion != null) {
 
 			if (minion.world.getTotalWorldTime() % 10L == 0) {
@@ -56,7 +56,7 @@ public interface IFireGolem {
 
 	}
 
-	default void onDeathDelegateFireGolem(EntityGolemBaseMinion minion) {
+	default void onDeathDelegate(EntityGolemBaseMinion minion) {
 		if (minion != null && minion.getCaster() != null && minion.getCaster() instanceof EntityPlayer) {
 
 			EntityPlayer player = (EntityPlayer) minion.getCaster();

@@ -1,7 +1,11 @@
 package com.windanesz.wizardrygolems;
 
+import com.windanesz.wizardrygolems.integration.ASIntegration;
 import com.windanesz.wizardrygolems.registry.BookshelfItems;
+import com.windanesz.wizardrygolems.registry.WizardryGolemsBlocks;
 import com.windanesz.wizardrygolems.registry.WizardryGolemsLoot;
+import com.windanesz.wizardrygolems.worldgen.WorldGenLivingSnow;
+import com.windanesz.wizardryutils.registry.ItemModelRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -9,16 +13,17 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Random;
 
-@Mod(modid = WizardryGolems.MODID, name = WizardryGolems.NAME, version = WizardryGolems.VERSION, acceptedMinecraftVersions = WizardryGolems.MC_VERSION, dependencies = "required-after:ebwizardry@[4.3,4.4);required-after:golems@[7.1.9,)")
+@Mod(modid = WizardryGolems.MODID, name = WizardryGolems.NAME, version = WizardryGolems.VERSION, acceptedMinecraftVersions = WizardryGolems.MC_VERSION, dependencies = "required-after:ebwizardry@[@WIZARDRY_VERSION@,4.4);required-after:wizardryutils@[@WIZARDRY_UTILS_VERSION@,);required-after:golems@[@GOLEMS_VERSION@,)")
 public class WizardryGolems {
 
 	public static final String MODID = "wizardrygolems";
 	public static final String NAME = "Wizardry Golems by Dan";
-	public static final String VERSION = "1.2.0";
+	public static final String VERSION = "@VERSION@";
 	public static final String MC_VERSION = "[1.12.2]";
 
 	public static final Random rand = new Random();
@@ -48,9 +53,11 @@ public class WizardryGolems {
 		settings = new Settings();
 		WizardryGolemsLoot.preInit();
 		proxy.registerRenderers();
+		ItemModelRegistry.registerModForAutoItemModelRegistry(MODID);
 
 		BookshelfItems.PreInitRegisterBookShelfModelTextures();
-
+		ASIntegration.init();
+		WizardryGolemsBlocks.registerTileEntities();
 	}
 
 	@EventHandler
@@ -61,6 +68,7 @@ public class WizardryGolems {
 		CommonProxy.registerGolems();
 
 		BookshelfItems.InitBookshelfItems();
+		GameRegistry.registerWorldGenerator(new WorldGenLivingSnow(), 50);
 	}
 
 	@EventHandler

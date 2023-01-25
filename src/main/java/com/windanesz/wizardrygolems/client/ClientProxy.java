@@ -21,11 +21,15 @@ import com.windanesz.wizardrygolems.entity.living.EntityMushroomGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityNetherBrickGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityOakWoodenGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityObsidianGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityPackedIceGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityPermafrostGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityPrismarineGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntitySandstoneGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntitySnowGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityStrawThornsGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityTNTGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityTerracottaGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityWinterGolemMinion;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -59,16 +63,23 @@ public class ClientProxy extends CommonProxy {
 		registerEntityRender(EntityFurnaceGolemMinion.class);
 		registerEntityRender(EntityFlameGolemMinion.class);
 
+		// Ice Golemancy
+		registerEntityRender(EntityIceGolemMinion.class);
+		registerEntityRender(EntityPackedIceGolemMinion.class);
+		registerEntityRender(EntityPermafrostGolemMinion.class);
+		registerEntityRender(EntitySnowGolemMinion.class);
+		registerEntityRender(EntityWinterGolemMinion.class);
+
 		// TODO
 		registerEntityRender(EntityCoalGolemMinion.class);
 		registerEntityRender(EntityPrismarineGolemMinion.class);
 		registerEntityRender(EntityBoneGolemMinion.class);
-		registerEntityRender(EntityIceGolemMinion.class);
 		registerEntityRender(EntityCraftingGolemMinion.class);
 		registerEntityRender(EntityGlowstoneGolemMinion.class);
 		registerEntityRender(EntityTNTGolemMinion.class);
 		registerEntityRender(EntityGoldGolemMinion.class);
 		registerEntityRender(EntityBookshelfGolemMinion.class);
+
 	}
 
 	/**

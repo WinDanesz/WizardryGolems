@@ -4,10 +4,13 @@ import com.golems.events.IceGolemFreezeEvent;
 import com.golems.main.ExtraGolems;
 import com.golems.util.GolemConfigSet;
 import com.golems.util.GolemNames;
+import com.windanesz.wizardrygolems.registry.WizardryGolemsItems;
+import electroblob.wizardry.item.ItemArtefact;
 import electroblob.wizardry.registry.WizardryPotions;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -22,7 +25,7 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import java.util.List;
 import java.util.function.Function;
 
-public class EntityIceGolemMinion extends EntityGolemBaseMinion {
+public class EntityIceGolemMinion extends EntityGolemBaseMinion implements IIceGolem {
 
 	public static final String ALLOW_SPECIAL = "Allow Special: Freeze Blocks";
 	public static final String AOE = "Area of Effect";
@@ -33,6 +36,8 @@ public class EntityIceGolemMinion extends EntityGolemBaseMinion {
 
 		this.setCanSwim(true); // just in case
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.26D);
+		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3);
+		this.setSize(1.4F, 2.9F);
 	}
 
 	protected ResourceLocation applyTexture() {
@@ -69,13 +74,26 @@ public class EntityIceGolemMinion extends EntityGolemBaseMinion {
 
 	@Override
 	public void onSuccessfulAttack(EntityLivingBase target) {
-		if (target instanceof EntityLivingBase) {
-			target.addPotionEffect(new PotionEffect(WizardryPotions.frost, 60, 1));
-		}
-		if (target.isBurning()) {
-			this.attackEntityFrom(DamageSource.GENERIC, 0.5F);
+		onSuccessFulAttackDelegate(this, target);
+
+		if (!this.world.isRemote && target != null && this.world.rand.nextBoolean() && getCaster() instanceof EntityPlayer
+				&& ItemArtefact.isArtefactActive((EntityPlayer) getCaster(), WizardryGolemsItems.ring_frostbite)) {
+			target.addPotionEffect(new PotionEffect(WizardryPotions.frost, 30, 1));
 		}
 	}
+
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		onGolemUpdate(this);
+	}
+
+	@Override
+	public void onDeath(DamageSource cause) {
+		onDeathDelegate(this);
+		super.onDeath(cause);
+	}
+
 
 	@Override
 	protected SoundEvent getDeathSound() {

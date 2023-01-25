@@ -10,7 +10,7 @@ public abstract class EntityEarthGolemMinion extends EntityGolemBaseMinion imple
 
 	@Override
 	public void onDeath(DamageSource cause) {
-		onDeathDelegate(this);
+		onGolemUpdate(this);
 		super.onDeath(cause);
 	}
 }

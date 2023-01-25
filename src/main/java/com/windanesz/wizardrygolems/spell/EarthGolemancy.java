@@ -1,6 +1,5 @@
 package com.windanesz.wizardrygolems.spell;
 
-import com.windanesz.wizardrygolems.entity.ai.EntitySummonAIFollowOwner;
 import com.windanesz.wizardrygolems.entity.living.EntityClayGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityConcreteGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityLeafGolemMinion;
@@ -18,22 +17,15 @@ import electroblob.wizardry.constants.Tier;
 import electroblob.wizardry.entity.living.ISummonedCreature;
 import electroblob.wizardry.item.ItemArtefact;
 import electroblob.wizardry.item.ItemWand;
-import electroblob.wizardry.registry.WizardryItems;
 import electroblob.wizardry.spell.SpellMinion;
-import electroblob.wizardry.util.BlockUtils;
-import electroblob.wizardry.util.EntityUtils;
 import electroblob.wizardry.util.ParticleBuilder;
 import electroblob.wizardry.util.SpellModifiers;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -46,20 +38,10 @@ import java.util.function.Function;
 
 import static electroblob.wizardry.item.ItemArtefact.getActiveArtefacts;
 
-public class EarthGolemancy<T extends EntityLiving & ISummonedCreature> extends SpellMinion<T> {
-
-	int golemCount = 3;
+public class EarthGolemancy<T extends EntityLiving & ISummonedCreature> extends Golemancy<T> {
 
 	public EarthGolemancy(String modID, String name, Function<World, T> minionFactory) {
 		super(modID, name, minionFactory);
-	}
-
-	@Override
-	public boolean cast(World world, EntityPlayer caster, EnumHand hand, int ticksInUse, SpellModifiers modifiers){
-
-		if(!this.spawnMinions(world, hand,  caster, modifiers)) return false;
-		this.playSound(world, caster, ticksInUse, -1, modifiers);
-		return true;
 	}
 
 	/**
@@ -76,7 +58,7 @@ public class EarthGolemancy<T extends EntityLiving & ISummonedCreature> extends 
 	 */
 	// Protected since someone might want to extend this class and change the behaviour of this method.
 	@SuppressWarnings("Duplicates")
-	protected boolean spawnMinions(World world, EnumHand hand, EntityLivingBase caster, SpellModifiers modifiers) {
+	protected boolean spawnGolems(World world, EnumHand hand, EntityLivingBase caster, SpellModifiers modifiers) {
 
 		if (caster instanceof EntityPlayer) {
 
@@ -119,7 +101,6 @@ public class EarthGolemancy<T extends EntityLiving & ISummonedCreature> extends 
 					} else if (artefact == WizardryGolemsItems.ring_obsidian) {
 						if (!player.getHeldItem(hand).isEmpty() && (player.getHeldItem(hand).getItem() instanceof ItemWand && ((ItemWand) player.getHeldItem(hand).getItem()).tier == Tier.MASTER
 								&& ((ItemWand) player.getHeldItem(hand).getItem()).element == Element.EARTH)) {
-							this.golemCount = 1;
 							int count = 1;
 							for (int i = 0; i < count; i++) {
 								EntityGolem golemi = new EntityObsidianGolemMinion(world);
@@ -127,7 +108,9 @@ public class EarthGolemancy<T extends EntityLiving & ISummonedCreature> extends 
 							}
 							hasArtefact = true;
 						} else {
-							if(!world.isRemote) player.sendStatusMessage(new TextComponentTranslation("spell." + this.getUnlocalisedName() + ".low_wand_tier"), true);
+							if (!world.isRemote) {
+								player.sendStatusMessage(new TextComponentTranslation("spell." + this.getUnlocalisedName() + ".low_wand_tier"), true);
+							}
 						}
 						break;
 
@@ -167,13 +150,13 @@ public class EarthGolemancy<T extends EntityLiving & ISummonedCreature> extends 
 				}
 
 				for (ItemArtefact artefact : getActiveArtefacts(player)) {
-					if (artefact == WizardryGolemsItems.ring_glistering){
+					if (artefact == WizardryGolemsItems.ring_glistering) {
 						EntityGolem golemi = new EntityMelonGolemMinion(world);
 						spawnGolem(golemi, player, world, modifiers);
 					}
 				}
 
-				// ClagGolem default spawn
+				// Default - 3x Clay Golems
 				if (!hasArtefact) {
 					int count = 3;
 					for (int i = 0; i < count; i++) {
@@ -224,36 +207,6 @@ public class EarthGolemancy<T extends EntityLiving & ISummonedCreature> extends 
 		}
 	}
 
-	@SuppressWarnings("Duplicates")
-	public void spawnGolem(EntityGolem golem, EntityPlayer caster, World world, SpellModifiers modifiers) {
-		int range = getProperty(SUMMON_RADIUS).intValue();
-		BlockPos pos = BlockUtils.findNearbyFloorSpace(caster, range, range * 2);
-
-		golem.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
-		((ISummonedCreature) golem).setCaster(caster);
-		// Modifier implementation
-		// Attribute modifiers are pretty opaque, see https://minecraft.gamepedia.com/Attribute#Modifiers
-		((ISummonedCreature) golem).setLifetime((int) (getProperty(MINION_LIFETIME).floatValue() * modifiers.get(WizardryItems.duration_upgrade)));
-		IAttributeInstance attribute = golem.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
-		float dmg = modifiers.get(SpellModifiers.POTENCY) - 1;
-		float health = modifiers.get(SpellModifiers.POTENCY) - 1;
-		if (attribute != null)
-			attribute.applyModifier( // Apparently some things don't have an attack damage
-					new AttributeModifier(POTENCY_ATTRIBUTE_MODIFIER, modifiers.get(SpellModifiers.POTENCY) - 1, EntityUtils.Operations.MULTIPLY_CUMULATIVE));
-		// This is only used for artefacts, but it's a nice example of custom spell modifiers
-		golem.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).applyModifier(
-				new AttributeModifier(HEALTH_MODIFIER, modifiers.get(HEALTH_MODIFIER) - 1, EntityUtils.Operations.MULTIPLY_CUMULATIVE));
-		golem.setHealth(golem.getMaxHealth()); // Need to set this because we may have just modified the value
-
-		EntitySummonAIFollowOwner task = new EntitySummonAIFollowOwner(golem, 1.0D, 10.0F, 2.0F);
-		golem.tasks.addTask(6, task);
-
-		this.addGolemExtras(golem, pos, caster, modifiers);
-
-		if (!world.isRemote)
-			world.spawnEntity(golem);
-	}
-
 	/**
 	 * Called just before each minion is spawned. Calls {@link EntityLiving#onInitialSpawn(DifficultyInstance, IEntityLivingData)}
 	 * by default, but subclasses can override to call extra methods on the summoned entity, for example to add
@@ -264,15 +217,11 @@ public class EarthGolemancy<T extends EntityLiving & ISummonedCreature> extends 
 	 * @param caster    The caster of this spell, or null if it was cast by a dispenser.
 	 * @param modifiers The modifiers this spell was cast with.
 	 */
+	@Override
 	protected void addGolemExtras(EntityGolem golem, BlockPos pos, @Nullable EntityLivingBase caster, SpellModifiers modifiers) {
-		golem.onInitialSpawn(golem.world.getDifficultyForLocation(pos), null);
+		// golem.onInitialSpawn(golem.world.getDifficultyForLocation(pos), null);
 		if (golem instanceof EntityObsidianGolemMinion) {
 			golem.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 1000, 0));
 		}
-	}
-
-	@Override
-	public boolean applicableForItem(Item item) {
-		return (item == WizardryGolemsItems.golemancy_spell_book || item == WizardryGolemsItems.golemancy_scroll);
 	}
 }

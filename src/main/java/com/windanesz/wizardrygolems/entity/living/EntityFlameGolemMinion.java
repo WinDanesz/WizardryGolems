@@ -98,7 +98,7 @@ public class EntityFlameGolemMinion extends EntityFireGolemMinion implements ISp
 
 				Spell spell = Spells.flaming_weapon;
 				// If anything stops the spell working at this point, nothing else happens.
-				if(MinecraftForge.EVENT_BUS.post(new SpellCastEvent.Pre(SpellCastEvent.Source.OTHER, Spells.flaming_weapon, getCaster(), new SpellModifiers()))){
+				if(MinecraftForge.EVENT_BUS.post(new SpellCastEvent.Pre(SpellCastEvent.Source.OTHER, spell, getCaster(), new SpellModifiers()))){
 					return;
 				}
 

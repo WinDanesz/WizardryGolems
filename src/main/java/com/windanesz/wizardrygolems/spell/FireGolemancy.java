@@ -25,7 +25,6 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.monster.EntityGolem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -35,20 +34,10 @@ import java.util.function.Function;
 
 import static electroblob.wizardry.item.ItemArtefact.getActiveArtefacts;
 
-public class FireGolemancy<T extends EntityLiving & ISummonedCreature> extends SpellMinion<T> {
-
-	int golemCount = 3;
+public class FireGolemancy<T extends EntityLiving & ISummonedCreature> extends Golemancy<T> {
 
 	public FireGolemancy(String modID, String name, Function<World, T> minionFactory) {
 		super(modID, name, minionFactory);
-	}
-
-	@Override
-	public boolean cast(World world, EntityPlayer caster, EnumHand hand, int ticksInUse, SpellModifiers modifiers) {
-
-		if (!this.spawnMinions(world, hand, caster, modifiers)) { return false; }
-		this.playSound(world, caster, ticksInUse, -1, modifiers);
-		return true;
 	}
 
 	/**
@@ -65,7 +54,7 @@ public class FireGolemancy<T extends EntityLiving & ISummonedCreature> extends S
 	 */
 	// Protected since someone might want to extend this class and change the behaviour of this method.
 	@SuppressWarnings("Duplicates")
-	protected boolean spawnMinions(World world, EnumHand hand, EntityLivingBase caster, SpellModifiers modifiers) {
+	protected boolean spawnGolems(World world, EnumHand hand, EntityLivingBase caster, SpellModifiers modifiers) {
 		boolean hasArtefact = false;
 
 		if (caster instanceof EntityPlayer) {
@@ -192,7 +181,10 @@ public class FireGolemancy<T extends EntityLiving & ISummonedCreature> extends S
 	}
 
 	@Override
-	public boolean applicableForItem(Item item) {
-		return (item == WizardryGolemsItems.golemancy_spell_book || item == WizardryGolemsItems.golemancy_scroll);
+	public float getLifeTimeModifiers(EntityLivingBase caster) {
+		if (caster instanceof EntityPlayer && ItemArtefact.isArtefactActive((EntityPlayer) caster, WizardryGolemsItems.ring_fire_golem_duration)) {
+			return 2.0f;
+		}
+		return super.getLifeTimeModifiers(caster);
 	}
 }

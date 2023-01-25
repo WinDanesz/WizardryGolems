@@ -12,7 +12,6 @@ import static electroblob.wizardry.Settings.toResourceLocations;
 @Config(modid = WizardryGolems.MODID, name = "WizardryGolems") // No fancy configs here so we can use the annotation, hurrah!
 public class Settings {
 
-	public ResourceLocation[] artefactInjectionLocations = toResourceLocations(generalSettings.ARTEFACT_INJECTION_LOCATIONS);
 	public ResourceLocation[] lootInjectLocations = toResourceLocations(generalSettings.LOOT_INJECTION_LOCATIONS);
 
 	@SuppressWarnings("unused")
@@ -36,13 +35,6 @@ public class Settings {
 
 	public static class GeneralSettings {
 
-		@Config.Name("Artefact Inject locations")
-		@Config.Comment("List of loot tables to inject Wizardry Golems artefacts (as specified in loot_tables/subsets/...) into.")
-		private String[] ARTEFACT_INJECTION_LOCATIONS = {
-				"ebwizardry:subsets/uncommon_artefacts",
-				"ebwizardry:subsets/rare_artefacts",
-				"ebwizardry:subsets/epic_artefacts"};
-
 		@Config.Name("Loot Inject locations")
 		@Config.Comment("List of loot tables to inject wizardrygolems loot (as specified in loot_tables/chests/dungeon_additions.json) into.")
 		private String[] LOOT_INJECTION_LOCATIONS = {"minecraft:chests/simple_dungeon",
@@ -50,5 +42,9 @@ public class Settings {
 				"minecraft:chests/stronghold_corridor", "minecraft:chests/stronghold_crossing",
 				"minecraft:chests/stronghold_library", "minecraft:chests/igloo_chest", "minecraft:chests/woodland_mansion",
 				"minecraft:chests/end_city_treasure"};
+
+		@Config.Name("Living Snow Dimensions")
+		@Config.Comment("List of dimension ids where living snow blocks can spawn.")
+		public int[] LIVING_SNOW_DIMENSIONS = {0};
 	}
 }

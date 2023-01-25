@@ -35,7 +35,7 @@ entity.wizardrygolems\:golem_crafting_minion.name=Crafting Golem Minion
 entity.wizardrygolems\:golem_ice_minion.name=Ice Golem Minion
 entity.wizardrygolems\:golem_packed_ice_minion.name=Packed Ice Golem Minion
 entity.wizardrygolems\:golem_permafrost_minion.name=Permafrost Golem Minion
-entity.wizardrygolems\:golem_snow_minion.name=Snow Golem Minion
+entity.wizardrygolems\:golem_snow_minion.name=Snow Golem
 entity.wizardrygolems\:golem_winter_minion.name=Winter Golem
 
 
@@ -126,10 +126,18 @@ item.wizardrygolems\:amulet_jagged_sapphire.desc=Ice Golemancy golems have 15%% 
 
 item.wizardrygolems\:charm_frozen_mark.name=Mark of Frozen Domain
 item.wizardrygolems\:charm_frozen_mark.desc=Ice Golemancy golems spawn ice sigils when they are killed
-#item.wizardrygolems\:charm_frozen_mark.desc=Ice Golemancy golems have doubled lifetime and heal over time in cold biomes
+
+item.wizardrygolems\:charm_living_snow.name=Bottle of Living Snow
+item.wizardrygolems\:charm_living_snow.desc=This bottle contains Living Snow that can be placed. Living Snow summons allied Snow Golems if enemies are nearby. The bottle can be recharged at an Arcane Workbench
+
+tile.wizardrygolems\:permafrost_custom.name=Permafrost
+tile.wizardrygolems\:living_snow.name=Living Snow
 
 item.wizardrygolems\:head_permafrost_crown.name=Permafrost Crown
 item.wizardrygolems\:head_permafrost_crown.desc=Ice Golemancy summons two permafrost golems that leave a trail of permafrost
+
+item.wizardrygolems\:belt_coldlink.name=Coldlink Belt
+item.wizardrygolems\:belt_coldlink.desc=Ice Golemancy golems heal you with each attack for a half heart if you have the Ice Shroud effect
 
 # SPELLS
 spell.wizardrygolems\:earth_golemancy=Earth Golemancy

@@ -6,7 +6,6 @@ import com.windanesz.wizardrygolems.entity.living.EntitySnowGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityWinterGolemMinion;
 import com.windanesz.wizardrygolems.registry.WizardryGolemsItems;
 import com.windanesz.wizardryutils.item.ItemNewArtefact;
-import electroblob.wizardry.client.DrawingUtils;
 import electroblob.wizardry.constants.Element;
 import electroblob.wizardry.constants.Tier;
 import electroblob.wizardry.entity.living.ISummonedCreature;
@@ -115,27 +114,24 @@ public class IceGolemancy<T extends EntityLiving & ISummonedCreature> extends Go
 
 	public void spawnDefaultParticles(World world, EntityLivingBase caster) {
 		if (world.isRemote) {
-			for (int i = 0; i < 30; i++) {
-				float r = world.rand.nextFloat();
-				double speed = 0.02 / r * (1 + world.rand.nextDouble());//(world.rand.nextBoolean() ? 1 : -1) * (0.05 + 0.02 * world.rand.nextDouble());
-				ParticleBuilder.create(ParticleBuilder.Type.MAGIC_FIRE)
-						.entity(caster)
-						.pos(caster.posX, caster.posY + world.rand.nextDouble() * 2, caster.posY)
-						.vel(0, 0, 0)
-						.scale(2)
-						.time(40 + world.rand.nextInt(10))
-						.spin(world.rand.nextDouble() * 0.5, speed)
-						.spawn(world);
-			}
-
 			for (int i = 0; i < 20; i++) {
 				float r = world.rand.nextFloat();
-				double speed = 0.02 / r * (1 + world.rand.nextDouble());//(world.rand.nextBoolean() ? 1 : -1) * (0.05 + 0.02 * world.rand.nextDouble());
+				double speed = 0.02 / r * (1 + world.rand.nextDouble());
 				ParticleBuilder.create(ParticleBuilder.Type.CLOUD)
-						.entity(caster)
-						.pos(caster.posX, caster.posY + world.rand.nextDouble() * 2.5, caster.posY)
-						.clr(DrawingUtils.mix(DrawingUtils.mix(0xffbe00, 0xff3600, r / 0.6f), 0x222222, (r - 0.6f) / 0.4f))
-						.spin(r * 0.5, speed)
+						.pos(caster.posX, caster.posY + 1, caster.posZ)
+						.clr(250, 255, 255)
+						.spin(r * (5 - 1) + 0.5, speed)
+						.time(20)
+						.spawn(world);
+			}
+			for (int i = 0; i < 30; i++) {
+				float r = world.rand.nextFloat();
+				double speed = 0.02 / r * (1 + world.rand.nextDouble());
+				ParticleBuilder.create(ParticleBuilder.Type.SNOW)
+						.pos(caster.posX, caster.posY + 1, caster.posZ)
+						.clr(250, 255, 255)
+						.spin(r * (5 - 1) + 0.5, speed)
+						.time((int) (20 + 20 * world.rand.nextFloat()))
 						.spawn(world);
 			}
 		}

@@ -1,9 +1,20 @@
-<h2>Version v1.1.1 - 10/30/2022</h2>
+<h2>Version v1.2.0 - 1/28/2023</h2>
 <p>&nbsp;</p>
 <h3>What's Changed</h3>
 <p><span style="font-size: 1.2rem;">&nbsp;</span></p>
+<h4><strong>Bug Fixes</strong></h4>
+<p>- Ixed wand requirements</p>
+<p>- Tem name fix</p>
+<p>- Fixed bug with Fire Golemancy golems always exploding on death, even when Steaming Netherrack Ring was not worn by the caster</p>
+<p>- Fixed the particles of Fire Golemancy</p>
+
 <h4><strong>Features</strong></h4>
-<p>- Some more helper methods</p>
+<p>- Increased max health of Strawthorns Golems</p>
+<p>- Buffed Amulet of Brambles, making it summon 1 -> 1-5 snares on golem death</p>
+<p>- Added Ice Golemancy</p>
+
+<h4><strong>Refactoring</strong></h4>
+<p>- Now uses WizardryUtils to inject artefacts to loot. the "Artefact Inject locations" setting was removed.</p>
 <p>&nbsp;</p>
 <p>As always, the easiest way to get help or feedback is through the Discord server! Find the link on the CurseForge page.</p>
 <p>&nbsp;</p>

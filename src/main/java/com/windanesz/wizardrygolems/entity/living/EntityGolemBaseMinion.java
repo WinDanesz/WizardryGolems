@@ -1,9 +1,13 @@
 package com.windanesz.wizardrygolems.entity.living;
 
 import com.golems.entity.GolemBase;
+import com.windanesz.wizardryutils.entity.ai.EntityAIMinionOwnerHurtByTarget;
 import electroblob.wizardry.Wizardry;
 import electroblob.wizardry.entity.living.ISummonedCreature;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -26,6 +30,16 @@ public abstract class EntityGolemBaseMinion extends GolemBase implements ISummon
 
 	public EntityGolemBaseMinion(World world) {
 		super(world);
+	}
+
+	@Override
+	protected void initEntityAI() {
+		super.initEntityAI();
+		this.targetTasks.taskEntries.clear();
+		this.targetTasks.addTask(1, new EntityAIMinionOwnerHurtByTarget(this));
+		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class,
+				0, false, true, this.getTargetSelector()));
 	}
 
 	/// Minion related methods ///
@@ -140,4 +154,8 @@ public abstract class EntityGolemBaseMinion extends GolemBase implements ISummon
 		return false;
 	}
 
+	@Override
+	protected void collideWithEntity(Entity entityIn) {
+		entityIn.applyEntityCollision(this);
+	}
 }

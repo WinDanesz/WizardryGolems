@@ -69,6 +69,7 @@ public class WizardryGolems {
 
 		BookshelfItems.InitBookshelfItems();
 		GameRegistry.registerWorldGenerator(new WorldGenLivingSnow(), 50);
+		CommonProxy.setGolemImmunities();
 	}
 
 	@EventHandler

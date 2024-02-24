@@ -59,7 +59,7 @@ public class EntityFlameGolemMinion extends EntityFireGolemMinion implements ISp
 		this.tasks.addTask(1, this.spellAttackAI);
 		this.setImmuneToFire(false);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100);
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(80);
 	}
 
 	@Override

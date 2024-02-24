@@ -3,6 +3,7 @@ package com.windanesz.wizardrygolems.client;
 import com.golems.entity.GolemBase;
 import com.golems.entity.GolemColorized;
 import com.windanesz.wizardrygolems.CommonProxy;
+import com.windanesz.wizardrygolems.client.renderer.entity.RenderSparkGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityBoneGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityBookshelfGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityClayGolemMinion;
@@ -15,6 +16,8 @@ import com.windanesz.wizardrygolems.entity.living.EntityGlowstoneGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityGoldGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityIceGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityLeafGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityLodestoneGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityMaelstromGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityMagmaGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityMelonGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityMushroomGolemMinion;
@@ -26,9 +29,11 @@ import com.windanesz.wizardrygolems.entity.living.EntityPermafrostGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityPrismarineGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntitySandstoneGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntitySnowGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntitySparkGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityStrawThornsGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityTNTGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityTerracottaGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityThunderstoneGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityWinterGolemMinion;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -69,6 +74,12 @@ public class ClientProxy extends CommonProxy {
 		registerEntityRender(EntityPermafrostGolemMinion.class);
 		registerEntityRender(EntitySnowGolemMinion.class);
 		registerEntityRender(EntityWinterGolemMinion.class);
+
+		//Lightning Golemancy
+		registerEntityRender(EntityThunderstoneGolemMinion.class);
+		registerEntityRender(EntityLodestoneGolemMinion.class);
+		registerEntityRender(EntityMaelstromGolemMinion.class);
+		RenderingRegistry.registerEntityRenderingHandler(EntitySparkGolemMinion.class, RenderSparkGolemMinion::new);
 
 		// TODO
 		registerEntityRender(EntityCoalGolemMinion.class);

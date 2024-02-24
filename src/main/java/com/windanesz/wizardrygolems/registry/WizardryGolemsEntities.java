@@ -14,6 +14,8 @@ import com.windanesz.wizardrygolems.entity.living.EntityGlowstoneGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityGoldGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityIceGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityLeafGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityLodestoneGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityMaelstromGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityMagmaGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityMelonGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityMushroomGolemMinion;
@@ -25,9 +27,11 @@ import com.windanesz.wizardrygolems.entity.living.EntityPermafrostGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityPrismarineGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntitySandstoneGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntitySnowGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntitySparkGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityStrawThornsGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityTNTGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityTerracottaGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityThunderstoneGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityWinterGolemMinion;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
@@ -102,6 +106,12 @@ public class WizardryGolemsEntities {
 		registry.register(createEntry(EntityPermafrostGolemMinion.class, "golem_permafrost_minion", TrackingType.LIVING).build());
 		registry.register(createEntry(EntitySnowGolemMinion.class, "golem_snow_minion", TrackingType.LIVING).build());
 		registry.register(createEntry(EntityWinterGolemMinion.class, "golem_winter_minion", TrackingType.LIVING).build());
+
+		// -------------------- Lightning --------------------
+		registry.register(createEntry(EntityThunderstoneGolemMinion.class, "golem_thunderstone_minion", TrackingType.LIVING).build());
+		registry.register(createEntry(EntityLodestoneGolemMinion.class, "golem_lodestone_minion", TrackingType.LIVING).build());
+		registry.register(createEntry(EntitySparkGolemMinion.class, "golem_spark_minion", TrackingType.LIVING).build());
+		registry.register(createEntry(EntityMaelstromGolemMinion.class, "golem_maelstrom_minion", TrackingType.LIVING).build());
 		// -------------------- TODO --------------------
 		registry.register(createEntry(EntityCraftingGolemMinion.class, "golem_crafting_minion", TrackingType.LIVING).build());
 		registry.register(createEntry(EntityCoalGolemMinion.class, "golem_coal_minion", TrackingType.LIVING).build());
@@ -138,6 +148,12 @@ public class WizardryGolemsEntities {
 		GolemLookup.addGolem(EntityPackedIceGolemMinion.class, Blocks.BEDROCK);
 		GolemLookup.addGolem(EntityPermafrostGolemMinion.class, Blocks.BEDROCK);
 		GolemLookup.addGolem(EntitySnowGolemMinion.class, Blocks.BEDROCK);
+
+		// -------------------- Lightning --------------------
+		GolemLookup.addGolem(EntityThunderstoneGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityLodestoneGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntitySparkGolemMinion.class, Blocks.BEDROCK);
+		GolemLookup.addGolem(EntityMaelstromGolemMinion.class, Blocks.BEDROCK);
 
 		// -------------------- TODO --------------------
 		GolemLookup.addGolem(EntityBoneGolemMinion.class, Blocks.BEDROCK);

@@ -35,9 +35,13 @@ entity.wizardrygolems\:golem_crafting_minion.name=Crafting Golem Minion
 entity.wizardrygolems\:golem_ice_minion.name=Ice Golem Minion
 entity.wizardrygolems\:golem_packed_ice_minion.name=Packed Ice Golem Minion
 entity.wizardrygolems\:golem_permafrost_minion.name=Permafrost Golem Minion
-entity.wizardrygolems\:golem_snow_minion.name=Snow Golem
-entity.wizardrygolems\:golem_winter_minion.name=Winter Golem
-
+entity.wizardrygolems\:golem_snow_minion.name=Snow Golem Minion
+entity.wizardrygolems\:golem_winter_minion.name=Winter Golem Minion
+# LIGHTNING
+entity.wizardrygolems\:golem_thunderstone_minion.name=Thunderstone Golem Minion
+entity.wizardrygolems\:golem_lodestone_minion.name=Lodestone Golem Minion
+entity.wizardrygolems\:golem_spark_minion.name=Spark Golem Minion
+entity.wizardrygolems\:golem_maelstrom_minion.name=Maelstrom Golem Minion
 
 # ----------------------------- ITEM -----------------------------
 item.wizardrygolems\:golemancy_spell_book.name=Spell Book
@@ -51,7 +55,7 @@ item.wizardrygolems\:ring_engraved_concrete.name=Engraved Concrete Ring
 item.wizardrygolems\:ring_engraved_concrete.desc=Earth Golemancy summons two Concrete Golems
 
 item.wizardrygolems\:ring_obsidian.name=Obsidian Skull Ring
-item.wizardrygolems\:ring_obsidian.desc=Summon a sturdy Obsidian Golem with Earth Golemancy
+item.wizardrygolems\:ring_obsidian.desc=Summon a sturdy Obsidian Golem with Earth Golemancy\nRequires a Master Earth Wand
 
 item.wizardrygolems\:ring_sandstone.name=Strange Sandstone Ring
 item.wizardrygolems\:ring_sandstone.desc=Earth Golemancy summons 5 Sandstone Golems
@@ -69,7 +73,10 @@ item.wizardrygolems\:ring_forest_guardian.name=Ring of Forest Guardians
 item.wizardrygolems\:ring_forest_guardian.desc=Earth Golemancy summons 2 Log Golems and 4 Leaf Golems
 
 item.wizardrygolems\:charm_dried_mushroom.name=Dried Mushroom Charm
-item.wizardrygolems\:charm_dried_mushroom.desc=Earth Golemancy summons 3 Mushroom Golems with poisonous attacks
+item.wizardrygolems\:charm_dried_mushroom.desc=Earth Golemancy summons 3 Mushroom Golems with poisonous attacks. Each golem has 50%% chance to spawn magical mushrooms upon death
+
+item.wizardrygolems\:amulet_raging_skies.name=Amulet of Raging Skies
+item.wizardrygolems\:amulet_raging_skies.desc=When a Lightning Golem dies, a lightning bolt emerges from the sky
 
 item.wizardrygolems\:amulet_snare.name=Amulet of Brambles
 item.wizardrygolems\:amulet_snare.desc=Earth Golemancy golems leave 1-5 Snare traps behind if killed
@@ -94,10 +101,10 @@ item.wizardrygolems\:ring_fire_golem_duration.name=Ring of Fire Golemancy
 item.wizardrygolems\:ring_fire_golem_duration.desc=Your Fire Golems have twice as long lifetime
 
 item.wizardrygolems\:ring_flame_golem.name=Sunstone Ring
-item.wizardrygolems\:ring_flame_golem.desc=Fire Golemancy will summon a Flame Golem\nFlame Golems wield powerful fire magic and they can imbue their owner's weapon with fire
+item.wizardrygolems\:ring_flame_golem.desc=Fire Golemancy will summon a Flame Golem\nFlame Golems wield powerful fire magic and they can imbue their owner's weapon with fire\nRequires a Master Fire Wand
 
 item.wizardrygolems\:charm_fire_golemancy_potency.name=Fire Elemental Heart
-item.wizardrygolems\:charm_fire_golemancy_potency.desc=Being near a Fire Golem while holding a Fire Staff will empower the caster's magic
+item.wizardrygolems\:charm_fire_golemancy_potency.desc=Being near a Fire Golem while holding a Fire Staff will empower the caster's magic\nRequires a Fire Wand
 
 item.wizardrygolems\:charm_ifrit_bottle.name=Sealed Ifrit
 item.wizardrygolems\:charm_ifrit_bottle.desc=Your Fire Golems gain a Fireskin effect. Being near a Fire Golem while holding a Fire Wand will grant you fire resistance
@@ -117,6 +124,21 @@ item.wizardrygolems\:ring_snow_golem.desc=Ice Golemancy summons 5 small snow gol
 
 item.wizardrygolems\:ring_winter_golem.name=Glacier Gem Ring
 item.wizardrygolems\:ring_winter_golem.desc=Ice Golemancy will summon a Winter Golem\nWinter Golems are powerful creatures of ice magic that can imbue their owner's weapon with the power of ice
+
+item.wizardrygolems\:ring_lodestone_golem.name=Ring of Ferromancy
+item.wizardrygolems\:ring_lodestone_golem.desc=Lightning Golemancy summons a Lodestone Golem, equipped with a ranged attack and the ability to manipulate magnetic forces, attracting or repelling nearby entities. Sneak-casting determines the polarity
+
+item.wizardrygolems\:head_maelstrom_golem.name=Mask of Maelstrom
+item.wizardrygolems\:head_maelstrom_golem.desc=Lightning Golemancy conjures a Maelstrom Golem, armed with the power of lightning magic\nRequires a Master Lightning Wand.
+
+item.wizardrygolems\:charm_static_aura.name=Cloak of Static Aura
+item.wizardrygolems\:charm_static_aura.desc=Your Lightning Golems gain the Static Aura effect. Being near a Lightning Golem while holding a Lightning Wand will also grant you the effect
+
+item.wizardrygolems\:ring_spark_golem.name=Ring of Keraunus
+item.wizardrygolems\:ring_spark_golem.desc=Lightning Golemancy summons a Spark Golem. Spark Golems deal magic damage that bypasses mundane armor and exhibit high resistance to physical attacks, albeit they are vulnerable to magic
+
+item.wizardrygolems\:ring_electric_scatter.name=Electric Scatter-Ring
+item.wizardrygolems\:ring_electric_scatter.desc=Lightning Golemancy summons 5 small Thunderstone Golems if no other golem-type rings are active. All golems leave behind a trail of lingering electricity.
 
 item.wizardrygolems\:amulet_broken_ice.name=Broken Ice Crystal Amulet
 item.wizardrygolems\:amulet_broken_ice.desc=Ice Golemancy golems have 50%% chance to shatter upon death
@@ -151,4 +173,8 @@ spell.wizardrygolems\:fire_golemancy.low_wand_tier=Only a Master tier Fire Wand 
 spell.wizardrygolems\:ice_golemancy=Ice Golemancy
 spell.wizardrygolems\:ice_golemancy.desc=Draw power from the essence of Ice to create golems.
 spell.wizardrygolems\:ice_golemancy.low_wand_tier=Only a Master tier Ice Wand can summon a Winter Golem
+
+spell.wizardrygolems\:lightning_golemancy=Lightning Golemancy
+spell.wizardrygolems\:lightning_golemancy.desc=Draw power from the essence of Lightning to create golems.
+spell.wizardrygolems\:lightning_golemancy.low_wand_tier=Only a Master tier Lightning Wand can summon this golem
 

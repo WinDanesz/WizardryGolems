@@ -7,10 +7,8 @@ import com.windanesz.wizardrygolems.entity.living.EntityMagmaGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityNetherBrickGolemMinion;
 import com.windanesz.wizardrygolems.registry.WizardryGolemsItems;
 import electroblob.wizardry.constants.Element;
-import electroblob.wizardry.constants.Tier;
 import electroblob.wizardry.entity.living.ISummonedCreature;
 import electroblob.wizardry.item.ItemArtefact;
-import electroblob.wizardry.item.ItemWand;
 import electroblob.wizardry.registry.WizardryItems;
 import electroblob.wizardry.spell.SpellMinion;
 import electroblob.wizardry.util.BlockUtils;
@@ -66,50 +64,36 @@ public class FireGolemancy<T extends EntityLiving & ISummonedCreature> extends G
 
 					if (artefact == WizardryGolemsItems.ring_smoldering) {
 						// Magma Golem
-						int count = 1;
-						for (int i = 0; i < count; i++) {
-							EntityGolem golemi = new EntityMagmaGolemMinion(world, false);
-							spawnGolem(golemi, player, world, modifiers);
-						}
+						spawnGolem(() -> new EntityMagmaGolemMinion(world), player, world, modifiers, 1);
 						hasArtefact = true;
 						break;
+					}
 
-					} else if (artefact == WizardryGolemsItems.ring_charcoal) {
+					if (artefact == WizardryGolemsItems.ring_charcoal) {
 						// Furnace Golem
-						int count = 2;
-						for (int i = 0; i < count; i++) {
-							EntityGolem golemi = new EntityFurnaceGolemMinion(world);
-							spawnGolem(golemi, player, world, modifiers);
-						}
+						spawnGolem(() -> new EntityFurnaceGolemMinion(world), player, world, modifiers, 2);
 						hasArtefact = true;
 						break;
-					} else if (artefact == WizardryGolemsItems.ring_flame_golem) {
-						if (!player.getHeldItem(hand).isEmpty() && (player.getHeldItem(hand).getItem() instanceof ItemWand && ((ItemWand) player.getHeldItem(hand).getItem()).tier == Tier.MASTER
-								&& ((ItemWand) player.getHeldItem(hand).getItem()).element == Element.FIRE)) {
+					}
+
+					if (artefact == WizardryGolemsItems.ring_flame_golem) {
+						if (hasMasterWand(player, Element.FIRE)) {
 							// Flame Golem
-							EntityGolem golemi = new EntityFlameGolemMinion(world);
-							spawnGolem(golemi, player, world, modifiers);
+							spawnGolem(() -> new EntityFlameGolemMinion(world), player, world, modifiers, 1);
 							hasArtefact = true;
 							break;
 						} else {
-							if (!world.isRemote) {
-								player.sendStatusMessage(new TextComponentTranslation("spell." + this.getUnlocalisedName() + ".low_wand_tier"), true);
-							}
+							player.sendStatusMessage(new TextComponentTranslation("spell." + this.getUnlocalisedName() + ".low_wand_tier"), true);
 						}
 					}
 				}
-
 			}
 		}
 
 		spawnDefaultParticles(world, caster);
 		if (!hasArtefact) {
 			// Default - 2x Nether Brick Golems
-			int count = 2;
-			for (int i = 0; i < count; i++) {
-				EntityGolem golemi = new EntityNetherBrickGolemMinion(world);
-				spawnGolem(golemi, caster, world, modifiers);
-			}
+			spawnGolem(() -> new EntityNetherBrickGolemMinion(world), caster, world, modifiers, 2);
 		}
 
 		return true;

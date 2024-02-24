@@ -1,6 +1,7 @@
 package com.windanesz.wizardrygolems.entity.living;
 
 import com.windanesz.wizardrygolems.registry.WizardryGolemsItems;
+import electroblob.wizardry.constants.Element;
 import electroblob.wizardry.item.ItemArtefact;
 import electroblob.wizardry.registry.WizardryItems;
 import electroblob.wizardry.registry.WizardryPotions;
@@ -14,7 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.SoundCategory;
 
-public interface IFireGolem {
+public interface IFireGolem extends IElementalGolem {
 
 	default void onGolemUpdate(EntityGolemBaseMinion minion) {
 		if (minion != null) {
@@ -72,5 +73,10 @@ public interface IFireGolem {
 	default boolean isFireWand(ItemStack stack) {
 		return stack != null && !stack.isEmpty() && (stack.getItem() == WizardryItems.novice_fire_wand || stack.getItem() == WizardryItems.apprentice_fire_wand
 				|| stack.getItem() == WizardryItems.advanced_fire_wand || stack.getItem() == WizardryItems.master_fire_wand);
+	}
+
+	@Override
+	default Element getElement() {
+		return Element.FIRE;
 	}
 }

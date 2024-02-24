@@ -148,6 +148,7 @@ dependencies {
     implementation fg.deobf("curse.maven:baubles-${baubles_projectid}:${baubles_fileid}")
     implementation fg.deobf("curse.maven:ExtraGolems-${extragolems_projectid}:${extragolems_fileid}")
     implementation fg.deobf("curse.maven:WizardryUtils-${wizardryutils_projectid}:${wizardryutils_fileid}")
+    implementation fg.deobf("curse.maven:AncientSpellcraft-${ancientspellcraft_projectid}:${ancientspellcraft_fileid}")
     //implementation "com.blamejared.crafttweaker:CraftTweaker2-MC1120-Main-1.12-4.1.9.6"
     //// Dependencies ////
 }

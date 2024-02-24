@@ -1,9 +1,9 @@
 package com.windanesz.wizardrygolems.spell;
 
-import com.windanesz.wizardrygolems.entity.living.EntityIceGolemMinion;
-import com.windanesz.wizardrygolems.entity.living.EntityPermafrostGolemMinion;
-import com.windanesz.wizardrygolems.entity.living.EntitySnowGolemMinion;
-import com.windanesz.wizardrygolems.entity.living.EntityWinterGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityLodestoneGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityMaelstromGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntitySparkGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityThunderstoneGolemMinion;
 import com.windanesz.wizardrygolems.registry.WizardryGolemsItems;
 import electroblob.wizardry.constants.Element;
 import electroblob.wizardry.entity.living.ISummonedCreature;
@@ -23,9 +23,9 @@ import java.util.function.Function;
 
 import static electroblob.wizardry.item.ItemArtefact.getActiveArtefacts;
 
-public class IceGolemancy<T extends EntityLiving & ISummonedCreature> extends Golemancy<T> {
+public class LightningGolemancy<T extends EntityLiving & ISummonedCreature> extends Golemancy<T> {
 
-	public IceGolemancy(String modID, String name, Function<World, T> minionFactory) {
+	public LightningGolemancy(String modID, String name, Function<World, T> minionFactory) {
 		super(modID, name, minionFactory);
 	}
 
@@ -45,7 +45,7 @@ public class IceGolemancy<T extends EntityLiving & ISummonedCreature> extends Go
 	@SuppressWarnings("Duplicates")
 	protected boolean spawnGolems(World world, EnumHand hand, EntityLivingBase caster, SpellModifiers modifiers) {
 		boolean hasArtefact = false;
-
+		boolean hasScatterRing = false;
 		if (caster instanceof EntityPlayer) {
 
 			EntityPlayer player = (EntityPlayer) caster;
@@ -54,37 +54,43 @@ public class IceGolemancy<T extends EntityLiving & ISummonedCreature> extends Go
 
 				for (ItemArtefact artefact : getActiveArtefacts(player)) {
 
-					if (artefact == WizardryGolemsItems.ring_snow_golem) {
-						spawnGolem(() -> new EntitySnowGolemMinion(world), player, world, modifiers, 5);
+					if (artefact == WizardryGolemsItems.ring_lodestone_golem) {
+						spawnGolem(() -> new EntityLodestoneGolemMinion(world), player, world, modifiers, 1);
 						hasArtefact = true;
 						break;
 					}
 
-					if (artefact == WizardryGolemsItems.ring_winter_golem) {
-						if (hasMasterWand(player, Element.ICE)) {
-							spawnGolem(() -> new EntityWinterGolemMinion(world), player, world, modifiers, 1);
+					if (artefact == WizardryGolemsItems.ring_spark_golem) {
+						spawnGolem(() -> new EntitySparkGolemMinion(world), player, world, modifiers, 1);
+						hasArtefact = true;
+						break;
+					}
+
+					if (artefact == WizardryGolemsItems.head_maelstrom_golem) {
+						if (hasMasterWand(player, Element.LIGHTNING)) {
+							spawnGolem(() -> new EntityMaelstromGolemMinion(world), player, world, modifiers, 1);
 							hasArtefact = true;
 							break;
 						} else {
 							player.sendStatusMessage(new TextComponentTranslation("spell." + this.getUnlocalisedName() + ".low_wand_tier"), true);
 						}
 					}
-
-					if (artefact == WizardryGolemsItems.head_permafrost_crown) {
-						// Permafrost Golems
-						spawnGolem(() -> new EntityPermafrostGolemMinion(world), caster, world, modifiers, 2);
-						hasArtefact = true;
-						break;
+					if (artefact == WizardryGolemsItems.ring_electric_scatter) {
+						hasScatterRing = true;
 					}
 				}
 			}
 		}
 
-		spawnDefaultParticles(world, caster);
 		if (!hasArtefact) {
-			// Default - 2x Ice Golems
-			spawnGolem(() -> new EntityIceGolemMinion(world), caster, world, modifiers, 2);
+			// Default - 2x Thunderstone Golems
+			if (hasScatterRing) {
+				spawnGolem(() -> new EntityThunderstoneGolemMinion(world, true), caster, world, modifiers, 5);
+			} else {
+				spawnGolem(() -> new EntityThunderstoneGolemMinion(world), caster, world, modifiers, 2);
+			}
 		}
+		spawnDefaultParticles(world, caster);
 
 		return true;
 	}
@@ -96,7 +102,7 @@ public class IceGolemancy<T extends EntityLiving & ISummonedCreature> extends Go
 				double speed = 0.02 / r * (1 + world.rand.nextDouble());
 				ParticleBuilder.create(ParticleBuilder.Type.CLOUD)
 						.pos(caster.posX, caster.posY + 1, caster.posZ)
-						.clr(250, 255, 255)
+						.clr(0.3f, 0.3f, 0.3f)
 						.spin(r * (5 - 1) + 0.5, speed)
 						.time(20)
 						.spawn(world);
@@ -104,7 +110,7 @@ public class IceGolemancy<T extends EntityLiving & ISummonedCreature> extends Go
 			for (int i = 0; i < 30; i++) {
 				float r = world.rand.nextFloat();
 				double speed = 0.02 / r * (1 + world.rand.nextDouble());
-				ParticleBuilder.create(ParticleBuilder.Type.SNOW)
+				ParticleBuilder.create(ParticleBuilder.Type.SPARK)
 						.pos(caster.posX, caster.posY + 1, caster.posZ)
 						.clr(250, 255, 255)
 						.spin(r * (5 - 1) + 0.5, speed)

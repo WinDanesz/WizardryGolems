@@ -47,4 +47,5 @@ public class Settings {
 		@Config.Comment("List of dimension ids where living snow blocks can spawn.")
 		public int[] LIVING_SNOW_DIMENSIONS = {0};
 	}
+
 }

@@ -13,10 +13,8 @@ import com.windanesz.wizardrygolems.entity.living.EntityTerracottaGolemMinion;
 import com.windanesz.wizardrygolems.registry.WizardryGolemsItems;
 import electroblob.wizardry.client.DrawingUtils;
 import electroblob.wizardry.constants.Element;
-import electroblob.wizardry.constants.Tier;
 import electroblob.wizardry.entity.living.ISummonedCreature;
 import electroblob.wizardry.item.ItemArtefact;
-import electroblob.wizardry.item.ItemWand;
 import electroblob.wizardry.spell.SpellMinion;
 import electroblob.wizardry.util.ParticleBuilder;
 import electroblob.wizardry.util.SpellModifiers;
@@ -68,110 +66,78 @@ public class EarthGolemancy<T extends EntityLiving & ISummonedCreature> extends 
 				boolean hasArtefact = false;
 
 				for (ItemArtefact artefact : getActiveArtefacts(player)) {
+
+					// no break as melon golems are added as an extra spawn
+					if (artefact == WizardryGolemsItems.ring_glistering) {
+						spawnGolem(() -> new EntityMelonGolemMinion(world), player, world, modifiers, 1);
+					}
+
 					if (artefact == WizardryGolemsItems.ring_ancient_emperor) {
-						int count = 12;
-						for (int i = 0; i < count; i++) {
-							EntityGolem golemi = new EntityTerracottaGolemMinion(world, true);
-							spawnGolem(golemi, player, world, modifiers);
-						}
-						hasArtefact = true;
-						break;
-
-						// ConcreteGolem
-					} else if (artefact == WizardryGolemsItems.ring_engraved_concrete) {
-						int count = 2;
-						for (int i = 0; i < count; i++) {
-							EntityGolem golemi = new EntityConcreteGolemMinion(world);
-							spawnGolem(golemi, player, world, modifiers);
-						}
-						hasArtefact = true;
-						break;
-
-						// SandstoneGolem
-					} else if (artefact == WizardryGolemsItems.ring_sandstone) {
-						int count = 5;
-						for (int i = 0; i < count; i++) {
-							EntityGolem golemi = new EntitySandstoneGolemMinion(world);
-							spawnGolem(golemi, player, world, modifiers);
-						}
-						hasArtefact = true;
-						break;
-
-						// ObsidianGolem
-					} else if (artefact == WizardryGolemsItems.ring_obsidian) {
-						if (!player.getHeldItem(hand).isEmpty() && (player.getHeldItem(hand).getItem() instanceof ItemWand && ((ItemWand) player.getHeldItem(hand).getItem()).tier == Tier.MASTER
-								&& ((ItemWand) player.getHeldItem(hand).getItem()).element == Element.EARTH)) {
-							int count = 1;
-							for (int i = 0; i < count; i++) {
-								EntityGolem golemi = new EntityObsidianGolemMinion(world);
-								spawnGolem(golemi, player, world, modifiers);
-							}
-							hasArtefact = true;
-						} else {
-							if (!world.isRemote) {
-								player.sendStatusMessage(new TextComponentTranslation("spell." + this.getUnlocalisedName() + ".low_wand_tier"), true);
-							}
-						}
-						break;
-
-						// WoodenGolem and LeafGolem
-					} else if (artefact == WizardryGolemsItems.ring_forest_guardian) {
-						int count = 2;
-						for (int i = 0; i < count; i++) {
-							EntityGolem golemi = new EntityOakWoodenGolemMinion(world);
-							spawnGolem(golemi, player, world, modifiers);
-						}
-						int leafGolemCount = 3;
-						for (int i = 0; i < leafGolemCount; i++) {
-							EntityGolem golemi = new EntityLeafGolemMinion(world, true);
-							spawnGolem(golemi, player, world, modifiers);
-						}
-						hasArtefact = true;
-						break;
-
-					} else if (artefact == WizardryGolemsItems.ring_grass) {
-						int count = 4;
-						for (int i = 0; i < count; i++) {
-							EntityGolem golemi = new EntityStrawThornsGolemMinion(world);
-							spawnGolem(golemi, player, world, modifiers);
-						}
-						hasArtefact = true;
-						break;
-
-					} else if (artefact == WizardryGolemsItems.charm_dried_mushroom) {
-						int count = 3;
-						for (int i = 0; i < count; i++) {
-							EntityGolem golemi = new EntityMushroomGolemMinion(world);
-							spawnGolem(golemi, player, world, modifiers);
-						}
+						spawnGolem(() -> new EntityTerracottaGolemMinion(world), player, world, modifiers, 12);
 						hasArtefact = true;
 						break;
 					}
-				}
 
-				for (ItemArtefact artefact : getActiveArtefacts(player)) {
-					if (artefact == WizardryGolemsItems.ring_glistering) {
-						EntityGolem golemi = new EntityMelonGolemMinion(world);
-						spawnGolem(golemi, player, world, modifiers);
+					if (artefact == WizardryGolemsItems.ring_engraved_concrete) {
+						// ConcreteGolem
+						spawnGolem(() -> new EntityConcreteGolemMinion(world), player, world, modifiers, 2);
+						hasArtefact = true;
+						break;
+					}
+
+					if (artefact == WizardryGolemsItems.ring_sandstone) {
+						// SandstoneGolem
+						spawnGolem(() -> new EntitySandstoneGolemMinion(world), player, world, modifiers, 5);
+						hasArtefact = true;
+						break;
+					}
+
+					if (artefact == WizardryGolemsItems.ring_obsidian) {
+						// ObsidianGolem
+						if (hasMasterWand(player, Element.EARTH)) {
+							spawnGolem(() -> new EntityObsidianGolemMinion(world), player, world, modifiers, 1);
+							hasArtefact = true;
+							break;
+						} else {
+							player.sendStatusMessage(new TextComponentTranslation("spell." + this.getUnlocalisedName() + ".low_wand_tier"), true);
+						}
+					}
+
+					if (artefact == WizardryGolemsItems.ring_forest_guardian) {
+						// WoodenGolem and Leaf Golem
+						spawnGolem(() -> new EntityOakWoodenGolemMinion(world), player, world, modifiers, 2);
+						spawnGolem(() -> new EntityLeafGolemMinion(world), player, world, modifiers, 3);
+						hasArtefact = true;
+						break;
+					}
+
+					if (artefact == WizardryGolemsItems.ring_grass) {
+						spawnGolem(() -> new EntityStrawThornsGolemMinion(world), player, world, modifiers, 4);
+						hasArtefact = true;
+						break;
+					}
+
+					if (artefact == WizardryGolemsItems.charm_dried_mushroom) {
+						spawnGolem(() -> new EntityMushroomGolemMinion(world, true), player, world, modifiers, 3);
+						hasArtefact = true;
+						break;
 					}
 				}
 
 				// Default - 3x Clay Golems
 				if (!hasArtefact) {
-					int count = 3;
-					for (int i = 0; i < count; i++) {
-						EntityGolem golemi = new EntityClayGolemMinion(world);
-						spawnGolem(golemi, player, world, modifiers);
-					}
+					spawnGolem(() -> new EntityClayGolemMinion(world), player, world, modifiers, 3);
 				}
 			}
 
 			if (ItemArtefact.isArtefactActive(player, WizardryGolemsItems.ring_ancient_emperor)) {
 				spawnDesertParticles(world, player);
-
 			} else {
 				spawnEarthParticles(world, player);
 			}
+		} else {
+			spawnGolem(() -> new EntityClayGolemMinion(world), caster, world, modifiers, 3);
+			spawnEarthParticles(world, caster);
 		}
 
 		return true;
@@ -192,7 +158,7 @@ public class EarthGolemancy<T extends EntityLiving & ISummonedCreature> extends 
 		}
 	}
 
-	public void spawnEarthParticles(World world, EntityPlayer caster) {
+	public void spawnEarthParticles(World world, EntityLivingBase caster) {
 		if (world.isRemote) {
 			for (int i = 0; i < 20; i++) {
 				float r = world.rand.nextFloat();

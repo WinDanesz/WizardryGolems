@@ -4,7 +4,6 @@ import com.windanesz.wizardrygolems.WizardryGolems;
 import com.windanesz.wizardrygolems.item.ItemGolemancyArtefact;
 import com.windanesz.wizardrygolems.item.ItemLivingSnowBottle;
 import com.windanesz.wizardrygolems.item.ItemPermanentGolemRing;
-import com.windanesz.wizardryutils.item.ItemNewArtefact;
 import com.windanesz.wizardryutils.registry.ItemRegistry;
 import electroblob.wizardry.constants.Element;
 import electroblob.wizardry.item.ItemArtefact;
@@ -87,6 +86,15 @@ public final class WizardryGolemsItems {
 	public static final Item charm_frozen_mark = placeholder();
 	public static final Item belt_coldlink = placeholder();
 
+	// Lightning
+	public static final Item ring_lodestone_golem = placeholder();
+	public static final Item head_maelstrom_golem = placeholder();
+	public static final Item ring_spark_golem = placeholder();
+	public static final Item ring_electric_scatter = placeholder();
+	public static final Item charm_static_aura = placeholder();
+	public static final Item amulet_raging_skies = placeholder();
+
+
 	// below registry methods are courtesy of EB
 	public static void registerItem(IForgeRegistry<Item> registry, String name, Item item) {
 		registerItem(registry, name, item, false);
@@ -161,8 +169,14 @@ public final class WizardryGolemsItems {
 		ItemRegistry.registerItemArtefact(registry, "charm_frozen_mark", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.CHARM, Element.ICE));
 		ItemRegistry.registerItemArtefact(registry, "charm_frost_cloak", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.CHARM, Element.ICE));
 		ItemRegistry.registerItemArtefact(registry, "charm_living_snow", WizardryGolems.MODID, new ItemLivingSnowBottle(EnumRarity.EPIC, ItemArtefact.Type.CHARM, Element.ICE));
-		ItemRegistry.registerItemArtefact(registry, "head_permafrost_crown", WizardryGolems.MODID, new ItemNewArtefact(EnumRarity.RARE, ItemNewArtefact.Type.HEAD));
-		ItemRegistry.registerItemArtefact(registry, "belt_coldlink", WizardryGolems.MODID, new ItemNewArtefact(EnumRarity.RARE, ItemNewArtefact.Type.BELT));
+		ItemRegistry.registerItemArtefact(registry, "head_permafrost_crown", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.HEAD, Element.ICE));
+		ItemRegistry.registerItemArtefact(registry, "belt_coldlink", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.BELT, Element.ICE));
+		ItemRegistry.registerItemArtefact(registry, "ring_lodestone_golem", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.LIGHTNING));
+		ItemRegistry.registerItemArtefact(registry, "head_maelstrom_golem", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.HEAD, Element.LIGHTNING));
+		ItemRegistry.registerItemArtefact(registry, "ring_spark_golem", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.LIGHTNING));
+		ItemRegistry.registerItemArtefact(registry, "ring_electric_scatter", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.RING, Element.LIGHTNING));
+		ItemRegistry.registerItemArtefact(registry, "charm_static_aura", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.CHARM, Element.LIGHTNING));
+		ItemRegistry.registerItemArtefact(registry, "amulet_raging_skies", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.CHARM, Element.LIGHTNING));
 
 	}
 }

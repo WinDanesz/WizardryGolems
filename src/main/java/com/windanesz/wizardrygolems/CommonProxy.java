@@ -36,6 +36,7 @@ import com.windanesz.wizardrygolems.entity.living.EntityGoldGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityIceGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityLeafGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityLodestoneGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntityMaelstromGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityMagmaGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityMelonGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityMushroomGolemMinion;
@@ -47,6 +48,7 @@ import com.windanesz.wizardrygolems.entity.living.EntityPermafrostGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityPrismarineGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntitySandstoneGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntitySnowGolemMinion;
+import com.windanesz.wizardrygolems.entity.living.EntitySparkGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityStrawThornsGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityTNTGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityTerracottaGolemMinion;
@@ -93,8 +95,10 @@ public class CommonProxy {
 		GolemLookup.addConfig(EntityIceGolemMinion.class, GolemLookup.getConfig(EntityIceGolem.class));
 		GolemLookup.addConfig(EntityPrismarineGolemMinion.class, GolemLookup.getConfig(EntityPrismarineGolem.class));
 		GolemLookup.addConfig(EntityTNTGolemMinion.class, GolemLookup.getConfig(EntityTNTGolem.class));
-		GolemLookup.addConfig(EntityThunderstoneGolemMinion.class, GolemLookup.getConfig(EntityIceGolem.class));
-		GolemLookup.addConfig(EntityLodestoneGolemMinion.class, GolemLookup.getConfig(EntityIceGolem.class));
+		GolemLookup.addConfig(EntityThunderstoneGolemMinion.class, GolemLookup.getConfig(EntityThunderstoneGolemMinion.class));
+		GolemLookup.addConfig(EntityLodestoneGolemMinion.class, GolemLookup.getConfig(EntityLodestoneGolemMinion.class));
+		GolemLookup.addConfig(EntitySparkGolemMinion.class, GolemLookup.getConfig(EntitySparkGolemMinion.class));
+		GolemLookup.addConfig(EntityMaelstromGolemMinion.class, GolemLookup.getConfig(EntityMaelstromGolemMinion.class));
 	}
 
 	public static void setGolemImmunities() {
@@ -125,5 +129,7 @@ public class CommonProxy {
 		// -------------------- Lightning --------------------
 		MagicDamage.setEntityImmunities(EntityThunderstoneGolemMinion.class, MagicDamage.DamageType.SHOCK);
 		MagicDamage.setEntityImmunities(EntityLodestoneGolemMinion.class, MagicDamage.DamageType.SHOCK);
+		MagicDamage.setEntityImmunities(EntitySparkGolemMinion.class, MagicDamage.DamageType.SHOCK);
+		MagicDamage.setEntityImmunities(EntityMaelstromGolemMinion.class, MagicDamage.DamageType.SHOCK);
 	}
 }

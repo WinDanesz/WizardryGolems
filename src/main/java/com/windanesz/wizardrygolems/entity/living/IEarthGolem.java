@@ -3,6 +3,7 @@ package com.windanesz.wizardrygolems.entity.living;
 import com.windanesz.wizardrygolems.WizardryGolems;
 import com.windanesz.wizardrygolems.registry.WizardryGolemsItems;
 import electroblob.wizardry.Wizardry;
+import electroblob.wizardry.constants.Element;
 import electroblob.wizardry.entity.construct.EntityEarthquake;
 import electroblob.wizardry.entity.living.ISummonedCreature;
 import electroblob.wizardry.item.ItemArtefact;
@@ -24,7 +25,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeForest;
 import net.minecraft.world.biome.BiomeProvider;
 
-public interface IEarthGolem {
+public interface IEarthGolem extends IElementalGolem {
 
 	default void onGolemUpdate(ISummonedCreature golem) {
 		if (golem instanceof EntityGolem && golem.getCaster() != null && golem.getCaster() instanceof EntityPlayer) {
@@ -84,5 +85,10 @@ public interface IEarthGolem {
 				}
 			}
 		}
+	}
+
+	@Override
+	default Element getElement() {
+		return Element.EARTH;
 	}
 }

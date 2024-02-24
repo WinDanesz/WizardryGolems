@@ -53,17 +53,18 @@ public class EntityIceGolemMinion extends EntityGolemBaseMinion implements IIceG
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		if (this.ticksExisted % 20 == 0) {
+		if (this.ticksExisted % 5 == 0) {
 			final int x = MathHelper.floor(this.posX);
 			final int y = MathHelper.floor(this.posY - 0.20000000298023224D);
 			final int z = MathHelper.floor(this.posZ);
 			final BlockPos below = new BlockPos(x, y, z);
-
-			Biome biome = this.world.getBiome(below);
-			if (biome.getTemperature(below) > 1.0F) {
-				this.attackEntityFrom(DamageSource.ON_FIRE, 0.5f);
-			} else if (biome.getTemperature(below) <=  0.1f) {
-				this.heal(0.3f);
+			if (this.ticksExisted % 20 == 0) {
+				Biome biome = this.world.getBiome(below);
+				if (biome.getTemperature(below) > 1.0F) {
+					this.attackEntityFrom(DamageSource.ON_FIRE, 0.5f);
+				} else if (biome.getTemperature(below) <= 0.1f) {
+					this.heal(0.3f);
+				}
 			}
 			GolemConfigSet cfg = getConfig(this);
 			if (cfg.getBoolean(ALLOW_SPECIAL)) {
@@ -96,7 +97,6 @@ public class EntityIceGolemMinion extends EntityGolemBaseMinion implements IIceG
 		onDeathDelegate(this);
 		super.onDeath(cause);
 	}
-
 
 	@Override
 	protected SoundEvent getDeathSound() {

@@ -21,7 +21,7 @@ public class WorldGenLivingSnow implements IWorldGenerator {
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider){
 
 		if(Ints.contains(Settings.generalSettings.LIVING_SNOW_DIMENSIONS, world.provider.getDimension())){
-			this.generateSnow(WizardryGolemsBlocks.living_snow.getDefaultState(), world, random, 8 + chunkX * 16, 8 + chunkZ * 16, 2, 20);
+			this.generateSnow(WizardryGolemsBlocks.living_snow.getDefaultState(), world, random, 8 + chunkX * 16, 8 + chunkZ * 16, 1, 20);
 		}
 	}
 
@@ -55,8 +55,6 @@ public class WorldGenLivingSnow implements IWorldGenerator {
 				if(world.isBlockLoaded(pos) && world.isAirBlock(pos) && (!world.provider.isNether() || j1 < 127)
 						&& world.getBlockState(pos.down()).getBlock() == Blocks.SNOW_LAYER){
 					world.setBlockState(pos.down(), state.withProperty(BlockLivingSnow.LAYERS, world.getBlockState(pos.down()).getValue(BlockSnow.LAYERS)), 2);
-//					TODO remove
-					System.out.println("Placed living snow at " + pos.getX() + " " + pos.getY() + " " + pos.getZ());
 				}
 			}
 		}

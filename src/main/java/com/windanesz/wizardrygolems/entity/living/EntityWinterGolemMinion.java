@@ -62,7 +62,7 @@ public class EntityWinterGolemMinion extends EntityGolemBaseMinion implements IS
 		super(world);
 		this.tasks.addTask(1, this.spellAttackAI);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100);
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(80);
 		this.setImmuneToFire(true);
 	}
 

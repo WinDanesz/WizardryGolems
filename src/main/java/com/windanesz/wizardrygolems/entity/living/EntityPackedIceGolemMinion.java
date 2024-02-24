@@ -17,6 +17,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
@@ -47,15 +48,17 @@ public class EntityPackedIceGolemMinion extends EntityGolemBaseMinion implements
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		// calling every other tick reduces lag by 50%
-		if (this.ticksExisted % 5 == 0) {
+		if (this.ticksExisted % 20 == 0) {
 			final int x = MathHelper.floor(this.posX);
 			final int y = MathHelper.floor(this.posY - 0.20000000298023224D);
 			final int z = MathHelper.floor(this.posZ);
 			final BlockPos below = new BlockPos(x, y, z);
 
-			if (this.world.getBiome(below).getTemperature(below) > 1.0F) {
-				this.attackEntityFrom(DamageSource.ON_FIRE, 1.0F);
+			Biome biome = this.world.getBiome(below);
+			if (biome.getTemperature(below) > 1.0F) {
+				this.attackEntityFrom(DamageSource.ON_FIRE, 0.5f);
+			} else if (biome.getTemperature(below) <=  0.1f) {
+				this.heal(0.3f);
 			}
 			final IceGolemFreezeEvent event = new IceGolemFreezeEvent(this, below, 1);
 			if (!MinecraftForge.EVENT_BUS.post(event) && event.getResult() != Event.Result.DENY) {

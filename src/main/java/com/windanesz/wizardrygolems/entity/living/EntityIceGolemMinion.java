@@ -19,6 +19,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
@@ -52,15 +53,17 @@ public class EntityIceGolemMinion extends EntityGolemBaseMinion implements IIceG
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		// calling every other tick reduces lag by 50%
-		if (this.ticksExisted % 2 == 0) {
+		if (this.ticksExisted % 20 == 0) {
 			final int x = MathHelper.floor(this.posX);
 			final int y = MathHelper.floor(this.posY - 0.20000000298023224D);
 			final int z = MathHelper.floor(this.posZ);
 			final BlockPos below = new BlockPos(x, y, z);
 
-			if (this.world.getBiome(below).getTemperature(below) > 1.0F) {
-				this.attackEntityFrom(DamageSource.ON_FIRE, 1.0F);
+			Biome biome = this.world.getBiome(below);
+			if (biome.getTemperature(below) > 1.0F) {
+				this.attackEntityFrom(DamageSource.ON_FIRE, 0.5f);
+			} else if (biome.getTemperature(below) <=  0.1f) {
+				this.heal(0.3f);
 			}
 			GolemConfigSet cfg = getConfig(this);
 			if (cfg.getBoolean(ALLOW_SPECIAL)) {

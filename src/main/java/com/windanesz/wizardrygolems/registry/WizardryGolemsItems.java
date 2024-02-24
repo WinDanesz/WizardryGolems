@@ -148,7 +148,7 @@ public final class WizardryGolemsItems {
 		// Fire
 		ItemRegistry.registerItemArtefact(registry, "ring_charcoal", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
 		ItemRegistry.registerItemArtefact(registry, "ring_smoldering", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
-		ItemRegistry.registerItemArtefact(registry, "ring_flame_trail", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
+		ItemRegistry.registerItemArtefact(registry, "ring_flame_trail", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.RING, Element.FIRE));
 		ItemRegistry.registerItemArtefact(registry, "ring_fire_golem_duration", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.RING, Element.FIRE));
 		ItemRegistry.registerItemArtefact(registry, "ring_flame_golem", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.RING, Element.FIRE));
 

@@ -1,5 +1,6 @@
 package com.windanesz.wizardrygolems.entity.living;
 
+import com.windanesz.ancientspellcraft.entity.projectile.EntitySafeIceShard;
 import com.windanesz.wizardrygolems.WizardryGolems;
 import electroblob.wizardry.entity.living.EntityAIAttackSpell;
 import electroblob.wizardry.entity.living.ISpellCaster;
@@ -9,6 +10,7 @@ import electroblob.wizardry.packet.WizardryPacketHandler;
 import electroblob.wizardry.registry.Spells;
 import electroblob.wizardry.registry.WizardryPotions;
 import electroblob.wizardry.spell.Spell;
+import electroblob.wizardry.util.BlockUtils;
 import electroblob.wizardry.util.ParticleBuilder;
 import electroblob.wizardry.util.SpellModifiers;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,6 +27,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -33,6 +36,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EntityWinterGolemMinion extends EntityGolemBaseMinion implements ISpellCaster, IIceGolem {
 
@@ -104,6 +108,22 @@ public class EntityWinterGolemMinion extends EntityGolemBaseMinion implements IS
 		super.onUpdate();
 		onGolemUpdate(this);
 
+		if (this.ticksExisted % 3 == 0) {
+			float radius = 11;
+			List<BlockPos> sphere = BlockUtils.getBlockSphere(this.getPosition().up(12), radius);
+			int yPos = this.getPosition().getY() + 10;
+			List<BlockPos> list = sphere.stream().filter((p) -> p.getY() == yPos && p.distanceSq(new BlockPos(this.posX, (double)p.getY(), this.posZ)) > 12.0).collect(Collectors.toList());
+
+			for(int i = 0; i < 1; ++i) {
+				BlockPos currPos = list.get(world.rand.nextInt(list.size()));
+				EntitySafeIceShard iceShard = new EntitySafeIceShard(world);
+				iceShard.setCaster(this);
+				iceShard.setPosition((float)currPos.getX() + world.rand.nextFloat(), (float)currPos.getY() + world.rand.nextFloat(), (float)currPos.getZ() + world.rand.nextFloat());
+				iceShard.motionY = -0.5;
+				world.spawnEntity(iceShard);
+			}
+		}
+
 		if (!world.isRemote && world.getTotalWorldTime() % 20 == 0 && world.rand.nextInt(10) == 0) {
 			if (getCaster() instanceof EntityPlayer) {
 				EntityPlayer caster = (EntityPlayer) getCaster();
@@ -132,16 +152,14 @@ public class EntityWinterGolemMinion extends EntityGolemBaseMinion implements IS
 
 		if (world.isRemote) {
 			for (int i = 0; i < 3; i++) {
-				double speed = (rand.nextBoolean() ? 1 : -1) * (0.1 + 0.05 * rand.nextDouble());
-				ParticleBuilder.create(ParticleBuilder.Type.SNOW).pos(this.posX, this.posY + rand.nextDouble() * height, this.posZ).vel(0, 0, 0)
-						.time(50).scale(2).spin(rand.nextDouble() * (1 - 0.5) + 0.5, speed).shaded(true).spawn(world);
+				double speed = (rand.nextBoolean() ? 1 : -1) * ( 0.05 * rand.nextDouble());
+				ParticleBuilder.create(ParticleBuilder.Type.SNOW).entity(this).pos(0, rand.nextDouble() * height, 0).vel(0, 0, 0)
+						.time(50).scale(1.4f).spin(rand.nextDouble() * (2 - 0.5) + 0.5, speed).shaded(true).spawn(world);
 			}
 
-			for (int i = 0; i < 2; i++) {
-				double speed = (rand.nextBoolean() ? 1 : -1) * (0.05 + 0.02 * rand.nextDouble());
-				ParticleBuilder.create(ParticleBuilder.Type.CLOUD).pos(this.posX, this.posY + rand.nextDouble() * (height - 0.5), this.posZ)
-						.clr(0xffffff).shaded(true).spin(rand.nextDouble() * (1 - 1) + 0.5, speed).spawn(world);
-			}
+			double speed = (rand.nextBoolean() ? 1 : -1) * (0.05 + 0.02 * rand.nextDouble());
+			ParticleBuilder.create(ParticleBuilder.Type.CLOUD).entity(this).pos(0, rand.nextDouble() * (height - 0.5), 0)
+					.clr(0xffffff).shaded(true).spin(rand.nextDouble() * (1 - 1) + 0.5, speed).spawn(world);
 		}
 	}
 

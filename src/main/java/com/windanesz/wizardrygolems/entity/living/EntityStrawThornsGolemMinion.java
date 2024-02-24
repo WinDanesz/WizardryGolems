@@ -5,9 +5,11 @@ import electroblob.wizardry.block.BlockThorns;
 import electroblob.wizardry.registry.WizardryBlocks;
 import electroblob.wizardry.tileentity.TileEntityThorns;
 import electroblob.wizardry.util.BlockUtils;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
@@ -35,7 +37,7 @@ public class EntityStrawThornsGolemMinion extends EntityEarthGolemMinion {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		if (this.rand.nextInt(40) == 0) {
+		if (this.rand.nextInt(30) == 0) {
 			if (!world.isRemote) { spawnThorns(); }
 		}
 	}
@@ -67,6 +69,13 @@ public class EntityStrawThornsGolemMinion extends EntityEarthGolemMinion {
 			}
 		}
 		return false;
+	}
+	@Override
+	public boolean attackEntityFrom(DamageSource source, float amount) {
+		if (source.getImmediateSource() instanceof EntityLivingBase) {
+			source.getImmediateSource().attackEntityFrom(DamageSource.causeThornsDamage(this), 2);
+		}
+		return super.attackEntityFrom(source, amount);
 	}
 
 	@Override

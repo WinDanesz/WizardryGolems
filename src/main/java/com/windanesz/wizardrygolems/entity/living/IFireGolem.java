@@ -5,7 +5,6 @@ import electroblob.wizardry.constants.Element;
 import electroblob.wizardry.item.ItemArtefact;
 import electroblob.wizardry.registry.WizardryItems;
 import electroblob.wizardry.registry.WizardryPotions;
-import electroblob.wizardry.util.EntityUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -63,8 +62,7 @@ public interface IFireGolem extends IElementalGolem {
 			EntityPlayer player = (EntityPlayer) minion.getCaster();
 			for (ItemArtefact artefact : ItemArtefact.getActiveArtefacts(player)) {
 				if (artefact == WizardryGolemsItems.amulet_steaming_netherrack && !minion.world.isRemote) {
-					boolean terrainDamage = EntityUtils.canDamageBlocks(player, player.world);
-					minion.world.newExplosion(null, minion.posX, minion.posY + 1, minion.posZ, 1, terrainDamage, terrainDamage);
+					minion.world.newExplosion(null, minion.posX, minion.posY + 1, minion.posZ, minion instanceof EntityFurnaceGolemMinion ? 3 : 1, false, false);
 				}
 			}
 		}

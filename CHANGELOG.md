@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.2] - 2024-02-25
+### :bug: Bug Fixes
+- [`4eb6961`](https://github.com/WinDanesz/WizardryGolems/commit/4eb69610372f65d939b40fd6dbc6122035bd8c77) - Fixed optional dependency on Ancient Spellcraft causing a crash if AS is not present. Fixes [#5](https://github.com/WinDanesz/WizardryGolems/pull/5) *(commit by [@WinDanesz](https://github.com/WinDanesz))*
+
+
 ## [v1.3.1] - 2024-02-25
 ### :sparkles: New Features
 - [`2d50a53`](https://github.com/WinDanesz/WizardryGolems/commit/2d50a537219bfea68011d9959a5b7818cd011746) - Spark Golems deal a weak chain lighting effect with basic attacks *(commit by [@WinDanesz](https://github.com/WinDanesz))*
@@ -54,3 +59,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v1.2.0]: https://github.com/WinDanesz/WizardryGolems/compare/1.0.0...v1.2.0
 [v1.3.0]: https://github.com/WinDanesz/WizardryGolems/compare/v1.2.0...v1.3.0
 [v1.3.1]: https://github.com/WinDanesz/WizardryGolems/compare/v1.3.0...v1.3.1
+[v1.3.2]: https://github.com/WinDanesz/WizardryGolems/compare/v1.3.1...v1.3.2

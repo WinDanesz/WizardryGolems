@@ -34,7 +34,7 @@ public class TileEntityLivingSnow extends TileEntityPlayerSave implements ITicka
 			cooldown--;
 		}
 
-		if (!this.world.isRemote && cooldown <= 0 && world.getTotalWorldTime() % 41 == 0) {
+		if (!getWorld().isDaytime() && !this.world.isRemote && cooldown <= 0 && world.getTotalWorldTime() % 41 == 0) {
 
 			List<EntityLivingBase> nearby = EntityUtils.getLivingWithinRadius(radius, this.pos.getX(), this.pos.getY(), this.pos.getZ(), world);
 			nearby.removeIf(e -> !isValidTarget(e));

@@ -35,7 +35,7 @@ entity.wizardrygolems\:golem_crafting_minion.name=Crafting Golem Minion
 entity.wizardrygolems\:golem_ice_minion.name=Ice Golem Minion
 entity.wizardrygolems\:golem_packed_ice_minion.name=Packed Ice Golem Minion
 entity.wizardrygolems\:golem_permafrost_minion.name=Permafrost Golem Minion
-entity.wizardrygolems\:golem_snow_minion.name=Snow Golem Minion
+entity.wizardrygolems\:golem_snow_minion.name=Snow Golem
 entity.wizardrygolems\:golem_winter_minion.name=Winter Golem Minion
 # LIGHTNING
 entity.wizardrygolems\:golem_thunderstone_minion.name=Thunderstone Golem Minion
@@ -177,4 +177,8 @@ spell.wizardrygolems\:ice_golemancy.low_wand_tier=Only a Master tier Ice Wand ca
 spell.wizardrygolems\:lightning_golemancy=Lightning Golemancy
 spell.wizardrygolems\:lightning_golemancy.desc=Draw power from the essence of Lightning to create golems.
 spell.wizardrygolems\:lightning_golemancy.low_wand_tier=Only a Master tier Lightning Wand can summon this golem
+
+spell.wizardrygolems\:healing_golemancy=Radiant Golemancy
+spell.wizardrygolems\:healing_golemancy.desc=Draw power from the essence of Light to create golems.
+spell.wizardrygolems\:healing_golemancy.low_wand_tier=Only a Master tier Healing Wand can summon this golem
 

@@ -3,6 +3,7 @@ package com.windanesz.wizardrygolems.entity.living;
 import com.golems.items.ItemBedrockGolem;
 import com.golems.main.ExtraGolems;
 import com.golems.util.GolemNames;
+import electroblob.wizardry.spell.Disintegration;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -105,6 +106,14 @@ public class EntityFurnaceGolemMinion extends EntityFireGolemMinion {
 		if (this.hasFuel()) {
 			super.applyEntityCollision(entityIn);
 		}
+	}
+
+	@Override
+	public boolean attackEntityAsMob(Entity entity) {
+		if (rand.nextFloat() < 0.33f) {
+			Disintegration.spawnEmbers(this.world, getCaster() != null ? this.getCaster() : this, entity, rand.nextInt(6) + 3);
+		}
+		return super.attackEntityAsMob(entity);
 	}
 
 	@Override

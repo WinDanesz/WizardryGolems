@@ -4,9 +4,17 @@ import com.golems.entity.GolemBase;
 import com.windanesz.wizardryutils.entity.ai.EntityAIMinionOwnerHurtByTarget;
 import electroblob.wizardry.Wizardry;
 import electroblob.wizardry.entity.living.ISummonedCreature;
+import electroblob.wizardry.packet.PacketNPCCastSpell;
+import electroblob.wizardry.packet.WizardryPacketHandler;
+import electroblob.wizardry.registry.Spells;
+import electroblob.wizardry.spell.Spell;
+import electroblob.wizardry.util.SpellModifiers;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.EntityAIDefendVillage;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAIMoveThroughVillage;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -21,6 +29,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 import java.util.UUID;
 
@@ -42,38 +51,45 @@ public abstract class EntityGolemBaseMinion extends GolemBase implements ISummon
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class,
 				0, false, true, this.getTargetSelector()));
+		removeTask(EntityAIMoveThroughVillage.class);
+		removeTask(EntityAIDefendVillage.class);
+	}
+
+	protected void removeTask(Class<? extends EntityAIBase> taskClassToRemove) {
+		// Iterate through tasks to find and remove the specified task
+		this.tasks.taskEntries.removeIf(entry -> taskClassToRemove.isInstance(entry.action));
 	}
 
 	/// Minion related methods ///
 
 	// Setter + getter implementations
 	@Override
-	public int getLifetime() { return lifetime; }
+	public int getLifetime() {return lifetime;}
 
 	@Override
-	public void setLifetime(int lifetime) { this.lifetime = lifetime; }
+	public void setLifetime(int lifetime) {this.lifetime = lifetime;}
 
 	@Override
-	public UUID getOwnerId() { return casterUUID; }
+	public UUID getOwnerId() {return casterUUID;}
 
 	@Override
-	public void setOwnerId(UUID uuid) { this.casterUUID = uuid; }
+	public void setOwnerId(UUID uuid) {this.casterUUID = uuid;}
 
 	// Recommended overrides
 	@Override
-	protected int getExperiencePoints(EntityPlayer player) { return 0; }
+	protected int getExperiencePoints(EntityPlayer player) {return 0;}
 
 	@Override
-	protected boolean canDropLoot() { return false; }
+	protected boolean canDropLoot() {return false;}
 
 	@Override
-	protected Item getDropItem() { return null; }
+	protected Item getDropItem() {return null;}
 
 	@Override
-	protected ResourceLocation getLootTable() { return null; }
+	protected ResourceLocation getLootTable() {return null;}
 
 	@Override
-	public boolean canPickUpLoot() { return false; }
+	public boolean canPickUpLoot() {return false;}
 
 	@Override
 	public void writeEntityToNBT(NBTTagCompound nbttagcompound) {
@@ -134,11 +150,11 @@ public abstract class EntityGolemBaseMinion extends GolemBase implements ISummon
 	}
 
 	@Override
-	public void setRevengeTarget(EntityLivingBase entity){
-		if(this.shouldRevengeTarget(entity)) super.setRevengeTarget(entity);
+	public void setRevengeTarget(EntityLivingBase entity) {
+		if (this.shouldRevengeTarget(entity)) {super.setRevengeTarget(entity);}
 	}
 
-	protected boolean processInteract(EntityPlayer player, EnumHand hand){
+	protected boolean processInteract(EntityPlayer player, EnumHand hand) {
 		// In this case, the delegate method determines whether super is called.
 		// Rather handily, we can make use of Java's short-circuiting method of evaluating OR statements.
 		return this.interactDelegate(player, hand) || super.processInteract(player, hand);
@@ -164,5 +180,19 @@ public abstract class EntityGolemBaseMinion extends GolemBase implements ISummon
 	@Override
 	protected void collideWithEntity(Entity entityIn) {
 		entityIn.applyEntityCollision(this);
+	}
+
+	protected void castSpellOnTarget(Entity target, Spell spell, SpellModifiers modifiers) {
+		if (target instanceof EntityLivingBase) {
+
+			spell.cast(world, this, EnumHand.MAIN_HAND, 0, (EntityLivingBase) target, modifiers);
+
+			if (spell.requiresPacket()) {
+				// Sends a packet to all players in dimension to tell them to spawn particles.
+				IMessage msg = new PacketNPCCastSpell.Message(this.getEntityId(), target.getEntityId(),
+						EnumHand.MAIN_HAND, Spells.chain_lightning, modifiers);
+				WizardryPacketHandler.net.sendToDimension(msg, this.world.provider.getDimension());
+			}
+		}
 	}
 }

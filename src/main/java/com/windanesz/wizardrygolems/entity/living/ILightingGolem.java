@@ -2,24 +2,18 @@ package com.windanesz.wizardrygolems.entity.living;
 
 import com.windanesz.wizardrygolems.integration.ASIntegration;
 import com.windanesz.wizardrygolems.registry.WizardryGolemsItems;
-import com.windanesz.wizardryutils.item.ItemNewArtefact;
 import electroblob.wizardry.Wizardry;
 import electroblob.wizardry.constants.Element;
-import electroblob.wizardry.entity.construct.EntityIceSpike;
 import electroblob.wizardry.item.ItemArtefact;
 import electroblob.wizardry.registry.WizardryItems;
 import electroblob.wizardry.registry.WizardryPotions;
 import electroblob.wizardry.spell.LightningBolt;
-import electroblob.wizardry.util.BlockUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
 public interface ILightingGolem extends IElementalGolem {
 
@@ -57,29 +51,7 @@ public interface ILightingGolem extends IElementalGolem {
 		}
 	}
 
-	default void onSuccessFulAttackDelegate(EntityGolemBaseMinion minion, EntityLivingBase target) {
-		if (!target.world.isRemote && target.world.rand.nextFloat() < 0.15f && minion.getCaster() instanceof EntityPlayer
-				&& ItemArtefact.isArtefactActive((EntityPlayer) minion.getCaster(), WizardryGolemsItems.amulet_jagged_sapphire)) {
-			for (int i = 0; i < 5; i++) {
-				EntityIceSpike iceSpike = new EntityIceSpike(target.world);
-				double x = target.posX + 2 - target.world.rand.nextFloat() * 4;
-				double z = target.posZ + 2 - target.world.rand.nextFloat() * 4;
-				Integer y = BlockUtils.getNearestSurface(target.world, new BlockPos(x, target.posY, z), EnumFacing.UP, 2, true,
-						BlockUtils.SurfaceCriteria.basedOn(World::isBlockFullCube));
-				if (y == null) {return;}
-				iceSpike.setFacing(EnumFacing.UP);
-				iceSpike.setCaster(minion.getCaster());
-				iceSpike.lifetime = 90;
-				iceSpike.setPosition(x, y, z);
-				target.world.spawnEntity(iceSpike);
-			}
-		}
-
-		if (!target.world.isRemote && minion.getCaster() instanceof EntityPlayer && minion.getCaster().isPotionActive(WizardryPotions.ice_shroud)
-				&& ItemNewArtefact.isArtefactActive((EntityPlayer) minion.getCaster(), WizardryGolemsItems.belt_coldlink)) {
-			minion.getCaster().heal(0.5f);
-		}
-	}
+	default void onSuccessFulAttackDelegate(EntityGolemBaseMinion minion, EntityLivingBase target) {	}
 
 	default void onDeathDelegate(EntityGolemBaseMinion minion) {
 		if (minion != null && minion.getCaster() != null && minion.getCaster() instanceof EntityPlayer) {

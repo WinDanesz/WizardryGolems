@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.1] - 2024-02-25
+### :sparkles: New Features
+- [`2d50a53`](https://github.com/WinDanesz/WizardryGolems/commit/2d50a537219bfea68011d9959a5b7818cd011746) - Spark Golems deal a weak chain lighting effect with basic attacks *(commit by [@WinDanesz](https://github.com/WinDanesz))*
+
+### :bug: Bug Fixes
+- [`db7a580`](https://github.com/WinDanesz/WizardryGolems/commit/db7a58005d714d0bd6cd36dcb4c65f81a8ff845e) - Terracotta golems are supposed to be small *(commit by [@WinDanesz](https://github.com/WinDanesz))*
+
+
 ## [v1.3.0] - 2024-02-25
 ### :sparkles: New Features
 - [`5a42b04`](https://github.com/WinDanesz/WizardryGolems/commit/5a42b047574ca5799b2bdf5a718df6c5584262cf) - Golems are now immune to elemental damage of their own element *(commit by [@WinDanesz](https://github.com/WinDanesz))*
@@ -45,3 +53,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v1.2.0]: https://github.com/WinDanesz/WizardryGolems/compare/1.0.0...v1.2.0
 [v1.3.0]: https://github.com/WinDanesz/WizardryGolems/compare/v1.2.0...v1.3.0
+[v1.3.1]: https://github.com/WinDanesz/WizardryGolems/compare/v1.3.0...v1.3.1

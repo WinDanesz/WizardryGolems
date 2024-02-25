@@ -1,6 +1,7 @@
 package com.windanesz.wizardrygolems.spell;
 
 import com.windanesz.wizardrygolems.entity.ai.EntitySummonAIFollowOwner;
+import com.windanesz.wizardrygolems.entity.living.EntityFurnaceGolemMinion;
 import com.windanesz.wizardrygolems.entity.living.EntityLodestoneGolemMinion;
 import com.windanesz.wizardrygolems.item.ItemPermanentGolemRing;
 import com.windanesz.wizardrygolems.registry.WizardryGolemsItems;
@@ -133,6 +134,10 @@ public abstract class Golemancy<T extends EntityLiving & ISummonedCreature> exte
 			golem.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).applyModifier(
 					new AttributeModifier(HEALTH_MODIFIER, modifiers.get(HEALTH_MODIFIER) - 1, EntityUtils.Operations.MULTIPLY_CUMULATIVE));
 			golem.setHealth(golem.getMaxHealth()); // Need to set this because we may have just modified the value
+
+			if (golem instanceof EntityFurnaceGolemMinion) {
+				((EntityFurnaceGolemMinion) golem).addFuel(1600);
+			}
 
 			if (!(golem instanceof EntityLodestoneGolemMinion)) {
 				EntitySummonAIFollowOwner task = new EntitySummonAIFollowOwner(golem, 1.0D, 10.0F, 2.0F);

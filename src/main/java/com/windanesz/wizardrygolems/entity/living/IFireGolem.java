@@ -62,7 +62,7 @@ public interface IFireGolem extends IElementalGolem {
 			EntityPlayer player = (EntityPlayer) minion.getCaster();
 			for (ItemArtefact artefact : ItemArtefact.getActiveArtefacts(player)) {
 				if (artefact == WizardryGolemsItems.amulet_steaming_netherrack && !minion.world.isRemote) {
-					minion.world.newExplosion(null, minion.posX, minion.posY + 1, minion.posZ, minion instanceof EntityFurnaceGolemMinion ? 3 : 1, false, false);
+					minion.world.newExplosion(null, minion.posX, minion.posY + 1, minion.posZ, minion instanceof EntityFurnaceGolemMinion ? 3 : 1.3f, false, false);
 				}
 			}
 		}

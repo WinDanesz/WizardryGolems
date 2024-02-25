@@ -112,6 +112,8 @@ public class EntityFurnaceGolemMinion extends EntityFireGolemMinion {
 	public boolean attackEntityAsMob(Entity entity) {
 		if (rand.nextFloat() < 0.33f) {
 			Disintegration.spawnEmbers(this.world, getCaster() != null ? this.getCaster() : this, entity, rand.nextInt(6) + 3);
+		} else if (rand.nextFloat() < 0.5f) {
+			this.world.newExplosion(this, entity.posX, entity.posY + 1, entity.posZ, 1f, false, false);
 		}
 		return super.attackEntityAsMob(entity);
 	}

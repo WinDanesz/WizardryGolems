@@ -39,16 +39,25 @@ public class EntityFlameGolemMinion extends EntityFireGolemMinion implements ISp
 	private double AISpeed = 0.5;
 
 	// Can attack for 7 seconds, then must cool down for 3.
-	private EntityAIAttackSpell<EntityFlameGolemMinion> spellAttackAI = new EntityAIAttackSpell<>(this, AISpeed, 15f, 30, 140);
+	private EntityAIAttackSpell<EntityFlameGolemMinion> spellAttackAI = new EntityAIAttackSpell<>(this, AISpeed, 15f, 5, 140);
 
 	private Spell continuousSpell;
 	private int spellCounter;
 
-	private static final List<Spell> attack = Collections.unmodifiableList(
+	private static final List<Spell> RANGED = Collections.unmodifiableList(
 			new ArrayList<Spell>() {{
 				add(Spells.fire_breath);
 				add(Spells.fireskin);
 				add(Spells.firebolt);
+				add(Spells.disintegration);
+			}}
+	);
+	private static final List<Spell> RANGED_AND_MELEE = Collections.unmodifiableList(
+			new ArrayList<Spell>() {{
+				add(Spells.fire_breath);
+				add(Spells.fireskin);
+				add(Spells.firebolt);
+				add(Spells.disintegration);
 				add(Spells.ring_of_fire);
 			}}
 	);
@@ -92,6 +101,11 @@ public class EntityFlameGolemMinion extends EntityFireGolemMinion implements ISp
 		setFire(3);
 
 		if (!world.isRemote && world.getTotalWorldTime() % 20 == 0 && world.rand.nextInt(10) == 0) {
+
+			if (getAttackTarget() == null || getAttackTarget().isDead) {
+				spellAttackAI.resetTask();
+			}
+
 			if (getCaster() instanceof EntityPlayer) {
 				EntityPlayer caster = (EntityPlayer) getCaster();
 				SpellModifiers modifiers = new SpellModifiers();
@@ -121,7 +135,10 @@ public class EntityFlameGolemMinion extends EntityFireGolemMinion implements ISp
 
 	@Override
 	public List<Spell> getSpells(){
-		return attack;
+		if (this.getAttackTarget() != null && getDistance(getAttackTarget()) > 3) {
+			return RANGED;
+		}
+		return RANGED_AND_MELEE;
 	}
 
 	@Override

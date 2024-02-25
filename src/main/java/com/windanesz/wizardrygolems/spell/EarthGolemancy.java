@@ -73,7 +73,7 @@ public class EarthGolemancy<T extends EntityLiving & ISummonedCreature> extends 
 					}
 
 					if (artefact == WizardryGolemsItems.ring_ancient_emperor) {
-						spawnGolem(() -> new EntityTerracottaGolemMinion(world), player, world, modifiers, 12);
+						spawnGolem(() -> new EntityTerracottaGolemMinion(world, true), player, world, modifiers, 12);
 						hasArtefact = true;
 						break;
 					}

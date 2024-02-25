@@ -1,9 +1,10 @@
 package com.windanesz.wizardrygolems.entity.living;
 
-import com.windanesz.ancientspellcraft.entity.projectile.EntitySafeIceShard;
 import com.windanesz.wizardrygolems.WizardryGolems;
+import com.windanesz.wizardrygolems.integration.ASIntegration;
 import electroblob.wizardry.entity.living.EntityAIAttackSpell;
 import electroblob.wizardry.entity.living.ISpellCaster;
+import electroblob.wizardry.entity.projectile.EntityIceShard;
 import electroblob.wizardry.event.SpellCastEvent;
 import electroblob.wizardry.packet.PacketCastSpell;
 import electroblob.wizardry.packet.WizardryPacketHandler;
@@ -116,7 +117,7 @@ public class EntityWinterGolemMinion extends EntityGolemBaseMinion implements IS
 
 			for(int i = 0; i < 1; ++i) {
 				BlockPos currPos = list.get(world.rand.nextInt(list.size()));
-				EntitySafeIceShard iceShard = new EntitySafeIceShard(world);
+				EntityIceShard iceShard = ASIntegration.getIceShard(world);
 				iceShard.setCaster(this);
 				iceShard.setPosition((float)currPos.getX() + world.rand.nextFloat(), (float)currPos.getY() + world.rand.nextFloat(), (float)currPos.getZ() + world.rand.nextFloat());
 				iceShard.motionY = -0.5;

@@ -2,7 +2,6 @@ package com.windanesz.wizardrygolems.entity.living;
 
 import com.golems.main.ExtraGolems;
 import com.golems.util.GolemConfigSet;
-import com.windanesz.ancientspellcraft.spell.FairyRing;
 import com.windanesz.wizardrygolems.integration.ASIntegration;
 import electroblob.wizardry.registry.WizardryItems;
 import electroblob.wizardry.util.SpellModifiers;
@@ -95,7 +94,7 @@ public class EntityMushroomGolemMinion extends EntityEarthGolemMinion {
 		if (rand.nextBoolean() && ASIntegration.isLoaded()) {
 			SpellModifiers m = new SpellModifiers();
 			m.set(WizardryItems.blast_upgrade, 0.5f, false);
-			FairyRing.summonMushroomRing(world, this.getOwner() instanceof EntityPlayer ? (EntityPlayer) this.getOwner() : this, this.getPosition(), m);
+			ASIntegration.summonFairyRing(world, this.getOwner() instanceof EntityPlayer ? (EntityPlayer) this.getOwner() : this, this.getPosition(), m);
 		}
 		super.onDeath(cause);
 	}

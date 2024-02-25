@@ -118,7 +118,7 @@ public class EarthGolemancy<T extends EntityLiving & ISummonedCreature> extends 
 					}
 
 					if (artefact == WizardryGolemsItems.charm_dried_mushroom) {
-						spawnGolem(() -> new EntityMushroomGolemMinion(world, true), player, world, modifiers, 3);
+						spawnGolem(() -> new EntityMushroomGolemMinion(world, true, world.rand.nextBoolean()), player, world, modifiers, 3);
 						hasArtefact = true;
 						break;
 					}

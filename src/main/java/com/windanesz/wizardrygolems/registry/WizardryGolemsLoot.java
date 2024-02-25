@@ -10,11 +10,9 @@ import net.minecraft.world.storage.loot.RandomValueRange;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Class responsible for registering Wizardry Golem's loot tables. Also handles loot injection.
@@ -40,15 +38,6 @@ public class WizardryGolemsLoot {
 	public static void onLootTableLoadEvent(LootTableLoadEvent event) {
 		if (Arrays.asList(WizardryGolems.settings.lootInjectLocations).contains(event.getName())) {
 			event.getTable().addPool(getAdditive(WizardryGolems.MODID + ":chests/dungeon_additions", WizardryGolems.MODID + "_wizardrygolems_dungeon_additions"));
-		}
-	}
-
-	private static void injectEntries(LootPool sourcePool, LootPool targetPool) {
-		// Accessing {@link net.minecraft.world.storage.loot.LootPool.lootEntries}
-		List<LootEntry> lootEntries = ObfuscationReflectionHelper.getPrivateValue(LootPool.class, sourcePool, "field_186453_a");
-
-		for (LootEntry entry : lootEntries) {
-			targetPool.addEntry(entry);
 		}
 	}
 

@@ -78,6 +78,7 @@ public class EntityMagmaGolemMinion extends EntityFireGolemMinion {
 
 	@Override
 	public void notifyDataManagerChange(DataParameter<?> key) {
+		super.notifyDataManagerChange(key);
 		// change stats if this is a child vs. an adult golem
 		GolemConfigSet cfg = getConfig(this);
 		if (this.isChild()) {

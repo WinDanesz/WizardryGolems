@@ -47,6 +47,7 @@ public class EntityThunderstoneGolemMinion extends EntityGolemBaseMinion impleme
 
 	@Override
 	public void notifyDataManagerChange(DataParameter<?> key) {
+		super.notifyDataManagerChange(key);
 		// change stats if this is a child vs. an adult golem
 		if (this.isChild()) {
 			this.setSize(0.7F, 1.45F);
@@ -136,7 +137,6 @@ public class EntityThunderstoneGolemMinion extends EntityGolemBaseMinion impleme
 		onDeathDelegate(this);
 		super.onDeath(cause);
 	}
-
 
 	@Override
 	protected SoundEvent getDeathSound() {

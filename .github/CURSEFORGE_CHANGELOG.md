@@ -1,9 +1,11 @@
-<h2>Version v1.3.2 - 2/25/2024</h2>
+<h2>Version v1.3.3 - 7/13/2025</h2>
 <p>&nbsp;</p>
 <h3>What's Changed</h3>
 <p><span style="font-size: 1.2rem;">&nbsp;</span></p>
-<h4><strong>Bug Fixes</strong></h4>
-<p>- Fixed optional dependency on Ancient Spellcraft causing a crash if AS is not present. Fixes #5</p>
+<h4><strong>Features</strong></h4>
+<p>- Zh_tw translation (by ScoTWT)</p>
+<p>- Changed Frost Cloak to body slot from charm slot</p>
+<p>- Translation into Russian (by Heimdallr-1) (#7)</p>
 <p>&nbsp;</p>
 <p>As always, the easiest way to get help or feedback is through the Discord server! Find the link on the CurseForge page.</p>
 <p>&nbsp;</p>

@@ -112,8 +112,8 @@ item.wizardrygolems\:charm_ifrit_bottle.desc=Your Fire Golems gain a Fireskin ef
 item.wizardrygolems\:ring_frostbite.name=Ring of Frostbite
 item.wizardrygolems\:ring_frostbite.desc=Your Ice Golemancy golems have 50%% chance to apply Frostbite on hit
 
-item.wizardrygolems\:charm_frost_cloak.name=Frost Cloak
-item.wizardrygolems\:charm_frost_cloak.desc=Your Ice Golems gain an Ice Shroud effect. Being near an Ice Golem while holding an Ice Wand will also grant you the effect
+item.wizardrygolems\:body_frost_cloak.name=Frost Cloak
+item.wizardrygolems\:body_frost_cloak.desc=Your Ice Golems gain an Ice Shroud effect. Being near an Ice Golem while holding an Ice Wand will also grant you the effect
 
 item.wizardrygolems\:ring_permanent_golem.name=Ring of the Golemancer
 item.wizardrygolems\:ring_permanent_golem.desc=Causes your next golem summoned by any golemancy spell to have unlimited lifetime.\nLimited to one entity at a time\n5 minutes cooldown

@@ -31,7 +31,7 @@ public interface IIceGolem extends IElementalGolem {
 					EntityPlayer player = (EntityPlayer) caster;
 
 					for (ItemArtefact artefact : ItemArtefact.getActiveArtefacts(player)) {
-						if (artefact == WizardryGolemsItems.charm_frost_cloak) {
+						if (artefact == WizardryGolemsItems.body_frost_cloak) {
 							if (minion.getDistance(player) < 16) {
 								minion.addPotionEffect(new PotionEffect(WizardryPotions.ice_shroud, 40, 0, true, true));
 								if (isIceWand(player.getHeldItemMainhand()) || isIceWand(player.getHeldItemOffhand())) {

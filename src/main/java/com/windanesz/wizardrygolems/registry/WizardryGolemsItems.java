@@ -22,6 +22,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry.ObjectHolder;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import javax.annotation.Nonnull;
+import net.minecraft.util.ResourceLocation;
 
 @ObjectHolder(WizardryGolems.MODID)
 @Mod.EventBusSubscriber
@@ -82,7 +83,7 @@ public final class WizardryGolemsItems {
 	public static final Item ring_winter_golem = placeholder();
 	public static final Item amulet_jagged_sapphire = placeholder();
 	public static final Item amulet_broken_ice = placeholder();
-	public static final Item charm_frost_cloak = placeholder();
+	public static final Item body_frost_cloak = placeholder();
 	public static final Item charm_frozen_mark = placeholder();
 	public static final Item belt_coldlink = placeholder();
 
@@ -167,7 +168,7 @@ public final class WizardryGolemsItems {
 		ItemRegistry.registerItemArtefact(registry, "amulet_jagged_sapphire", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.AMULET, Element.ICE));
 		ItemRegistry.registerItemArtefact(registry, "amulet_broken_ice", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.AMULET, Element.ICE));
 		ItemRegistry.registerItemArtefact(registry, "charm_frozen_mark", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.UNCOMMON, ItemArtefact.Type.CHARM, Element.ICE));
-		ItemRegistry.registerItemArtefact(registry, "charm_frost_cloak", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.CHARM, Element.ICE));
+		ItemRegistry.registerItemArtefact(registry, "body_frost_cloak", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.BODY, Element.ICE));
 		ItemRegistry.registerItemArtefact(registry, "charm_living_snow", WizardryGolems.MODID, new ItemLivingSnowBottle(EnumRarity.EPIC, ItemArtefact.Type.CHARM, Element.ICE));
 		ItemRegistry.registerItemArtefact(registry, "head_permafrost_crown", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.HEAD, Element.ICE));
 		ItemRegistry.registerItemArtefact(registry, "belt_coldlink", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.RARE, ItemArtefact.Type.BELT, Element.ICE));
@@ -178,5 +179,14 @@ public final class WizardryGolemsItems {
 		ItemRegistry.registerItemArtefact(registry, "charm_static_aura", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.CHARM, Element.LIGHTNING));
 		ItemRegistry.registerItemArtefact(registry, "amulet_raging_skies", WizardryGolems.MODID, new ItemGolemancyArtefact(EnumRarity.EPIC, ItemArtefact.Type.CHARM, Element.LIGHTNING));
 
+	}
+
+	@SubscribeEvent
+	public static void onMissingMappings(RegistryEvent.MissingMappings<Item> event) {
+		for (RegistryEvent.MissingMappings.Mapping<Item> mapping : event.getMappings()) {
+			if (mapping.key.equals(new ResourceLocation("wizardrygolems", "charm_frost_cloak"))) {
+				mapping.remap(body_frost_cloak);
+			}
+		}
 	}
 }

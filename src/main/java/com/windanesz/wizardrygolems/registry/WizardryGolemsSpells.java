@@ -31,7 +31,7 @@ public final class WizardryGolemsSpells {
 	public static final Spell fire_golemancy = placeholder();
 	public static final Spell ice_golemancy = placeholder();
 	public static final Spell lightning_golemancy = placeholder();
-	public static final Spell healing = placeholder();
+	//public static final Spell healing_golemancy = placeholder();
 
 	@Nonnull
 	@SuppressWarnings("ConstantConditions")

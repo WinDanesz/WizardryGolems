@@ -1,0 +1,183 @@
+#PARSE_ESCAPES
+itemGroup.wizardrygolems.tabWizardryGolems=Wizardry Golems
+
+# ----------------------------- ENTITY -----------------------------
+# EARTH
+entity.wizardrygolems\:golem_leaf_minion.name=Лиственный голем
+entity.wizardrygolems\:golem_clay_minion.name=Глиняный голем
+entity.wizardrygolems\:golem_terracotta_minion.name=Терракотовый голем
+entity.wizardrygolems\:golem_concrete_minion.name=Бетонный голем
+entity.wizardrygolems\:golem_obsidian_minion.name=Обсидиановый голем
+entity.wizardrygolems\:golem_wooden_oak_minion.name=Деревянный голем
+entity.wizardrygolems\:golem_straw_minion.name=Соломенный голем
+entity.wizardrygolems\:golem_melon_minion.name=Арбузный голем
+entity.wizardrygolems\:golem_sandstone_minion.name=Песчаный голем
+
+# FIRE
+entity.wizardrygolems\:golem_magma_minion.name=Магмовый голем
+entity.wizardrygolems\:golem_netherbrick_minion.name=Голем из незерского кирпича
+entity.wizardrygolems\:golem_furnace_minion.name=Голем-печь
+entity.wizardrygolems\:golem_flame_minion.name=Пламенный голем
+
+# TODO
+entity.wizardrygolems\:golem_glowstone_minion.name=Светокаменный голем
+entity.wizardrygolems\:golem_mushroom_minion.name=Грибной голем
+entity.wizardrygolems\:golem_prismarine_minion.name=Призмариновый голем
+entity.wizardrygolems\:golem_tnt_minion.name=Динамитный голем
+entity.wizardrygolems\:golem_bookshelf_minion.name=Голем из книжной полки
+entity.wizardrygolems\:golem_gold_minion.name=Золотой голем
+entity.wizardrygolems\:golem_coal_minion.name=Угольный голем
+entity.wizardrygolems\:golem_bone_minion.name=Костяной голем
+entity.wizardrygolems\:golem_crafting_minion.name=Голем-верстак
+
+# ICE
+entity.wizardrygolems\:golem_ice_minion.name=Ледяной голем
+entity.wizardrygolems\:golem_packed_ice_minion.name=Голем из плотного льда
+entity.wizardrygolems\:golem_permafrost_minion.name=Голем из мерзлотной почвы
+entity.wizardrygolems\:golem_snow_minion.name=Снежный голем
+entity.wizardrygolems\:golem_winter_minion.name=Зимний голем
+# LIGHTNING
+entity.wizardrygolems\:golem_thunderstone_minion.name=Голем из громового камня
+entity.wizardrygolems\:golem_lodestone_minion.name=Магнетитовый голем
+entity.wizardrygolems\:golem_spark_minion.name=Искровый голем
+entity.wizardrygolems\:golem_maelstrom_minion.name=Голем-вихрь
+
+# ----------------------------- ITEM -----------------------------
+item.wizardrygolems\:golemancy_spell_book.name=Колдовская книга
+item.wizardrygolems\:golemancy_scroll.name=Свиток
+
+# EARTH
+item.wizardrygolems\:ring_ancient_emperor.name=Кольцо древнего императора
+item.wizardrygolems\:ring_ancient_emperor.desc=Големантия земли призывает Терракотовую армию.
+
+item.wizardrygolems\:ring_engraved_concrete.name=Выгравированное бетонное кольцо
+item.wizardrygolems\:ring_engraved_concrete.desc=Големантия земли призывает 2 бетонных голема.
+
+item.wizardrygolems\:ring_obsidian.name=Кольцо из обсидиановый черепа
+item.wizardrygolems\:ring_obsidian.desc=Призывает прочного Обсидианового голема при помощи Големантии земли.\nТребуется: Жезл леса уровня магистра
+
+item.wizardrygolems\:ring_sandstone.name=Кольцо из необычного песчаника
+item.wizardrygolems\:ring_sandstone.desc=Големантия земли призывает 5 песчаных голема.
+
+item.wizardrygolems\:amulet_gaia.name=Ярость Геи
+item.wizardrygolems\:amulet_gaia.desc=10%% вероятность активировать землетрясение при убийстве Голема земли.
+
+item.wizardrygolems\:ring_grass.name=Кольцо из плетёной травы
+item.wizardrygolems\:ring_grass.desc=Големантия земли призывает 4 соломенных голема.
+
+item.wizardrygolems\:ring_glistering.name=Сияющее кольцо
+item.wizardrygolems\:ring_glistering.desc=Големантия земли всегда призывает Арбузного голема, который во время боя постоянно лечит своего владельца.
+
+item.wizardrygolems\:ring_forest_guardian.name=Кольцо хранителей леса
+item.wizardrygolems\:ring_forest_guardian.desc=Големантия земли призывает 2 бревенчатых голема и 4 лиственных голема.
+
+item.wizardrygolems\:charm_dried_mushroom.name=Талисман из сушёного гриба
+item.wizardrygolems\:charm_dried_mushroom.desc=Големантия земли призывает 3 грибных голема с ядовитыми атаками. У каждого голема есть 50%% вероятность создать волшебные грибы после смерти.
+
+item.wizardrygolems\:amulet_raging_skies.name=Амулет разъярённых небес
+item.wizardrygolems\:amulet_raging_skies.desc=После смерти Грозового голема, с неба внезапно появляется молния.
+
+item.wizardrygolems\:amulet_snare.name=Амулет из терновника
+item.wizardrygolems\:amulet_snare.desc=Големы Големантии земли оставляются после себя 1-5 ловушек в случае смерти.
+
+item.wizardrygolems\:amulet_deathweed.name=Амулет из мёртвой травы
+item.wizardrygolems\:amulet_deathweed.desc=10%% вероятность активировать Проклятие леса, в случае смерти голема Големантии земли (100%% вероятность в лесу).
+
+# FIRE
+item.wizardrygolems\:amulet_steaming_netherrack.name=Амулет из дымящегося незерака
+item.wizardrygolems\:amulet_steaming_netherrack.desc=Големы, что вызваны Големантией огня при убийстве будут взрываться.
+
+item.wizardrygolems\:ring_smoldering.name=Тлеющее кольцо
+item.wizardrygolems\:ring_smoldering.desc=Големантия огня призывает Магмового голема, разделяющегося после смерти.
+
+item.wizardrygolems\:ring_flame_trail.name=Кольцо пламенного следа
+item.wizardrygolems\:ring_flame_trail.desc=Прислужники Големантии огня поджигают под собой землю.
+
+item.wizardrygolems\:ring_charcoal.name=Кольцо из древесного угля
+item.wizardrygolems\:ring_charcoal.desc=Големантия огня призывает 2 Голема-печь. Големы должны запитываться углём для функционирования. Каждое добавляемое топливо вслед за первым повышает время жизни голема на 10 секунд.
+
+item.wizardrygolems\:ring_fire_golem_duration.name=Кольцо големантии огня
+item.wizardrygolems\:ring_fire_golem_duration.desc=Время жизни ваших огненных големов двое дольше.
+
+item.wizardrygolems\:ring_flame_golem.name=Кольцо из солнечного камня
+item.wizardrygolems\:ring_flame_golem.desc=Големантия огня призывает Пламенного голема.\nПламенные големы, владеющие могущественной магией огня, наделяют оружие своего владельца пламенем.\nТребуется: Жезл раскалённых углей уровня магистра.
+
+item.wizardrygolems\:charm_fire_golemancy_potency.name=Сердце огненного элементаля
+item.wizardrygolems\:charm_fire_golemancy_potency.desc=Находясь вблизи Огненного голема во время удерживания Огненного посоха, усилит колдуна магией.\nТребуется: Жезл раскалённых углей.
+
+item.wizardrygolems\:charm_ifrit_bottle.name=Запечатанный ифрит
+item.wizardrygolems\:charm_ifrit_bottle.desc=Ваши огненные големы получают эффект Огненная кожа. Находясь вблизи Огненного голема во время удерживания Жезла раскалённых углей наделит вас огнестойкостью.
+
+item.wizardrygolems\:ring_frostbite.name=Кольцо отморожения
+item.wizardrygolems\:ring_frostbite.desc=У големов Големантии льда есть 50%% вероятность наложить Отморожение при ударе.
+
+item.wizardrygolems\:charm_frost_cloak.name=Морозная мантия
+item.wizardrygolems\:charm_frost_cloak.desc=Ваши ледяные големы получают эффект Ледяной покров. Находясь вблизи Ледяного голема во время удерживания Жезла мороза вас тоже наделит этим эффектом.
+
+item.wizardrygolems\:ring_permanent_golem.name=Кольцо големанта
+item.wizardrygolems\:ring_permanent_golem.desc=Любое заклинание големантии заставляет ближайших големов обретать безграничное время жизни.\nКаждый раз ограничивается одним существом.\nПерезарядка 5 минут.
+
+item.wizardrygolems\:ring_snow_golem.name=Кольцо, усыпанное снегом
+item.wizardrygolems\:ring_snow_golem.desc=Големантия льда призывает 5 малых снежных големов.
+#\nСоседние блоки снега позволяют призывать ещё 8.
+
+item.wizardrygolems\:ring_winter_golem.name=Кольцо с ледником
+item.wizardrygolems\:ring_winter_golem.desc=Големантия льда призывает Зимнего голема.\nЗимние големы — могущественные существа магии льда, способные наделить оружие своего владельца силой льда.
+
+item.wizardrygolems\:ring_lodestone_golem.name=Кольцо Ферроманта
+item.wizardrygolems\:ring_lodestone_golem.desc=Големантия грозы призывает Магнетитового голема, оснащённого дальней атакой со способностью манипулирования силами магнитного поля, чтобы притягивать или отталкивать близлежащих существ. 
+#\nПриседание + использование определяет полярность.
+
+item.wizardrygolems\:head_maelstrom_golem.name=Маска вихря
+item.wizardrygolems\:head_maelstrom_golem.desc=Големантия грозы наколдовывает Вихревого голема, вооружённого силой магии грозы.\nТребуется: Жезл искр уровня магистра.
+
+item.wizardrygolems\:charm_static_aura.name=Мантия электростатической ауры
+item.wizardrygolems\:charm_static_aura.desc=Ваши грозовые големы получают эффект Электростатическая аура. Находясь вблизи Грозового голема во время удерживания Жезла искр вас тоже наделит этим эффектом.
+
+item.wizardrygolems\:ring_spark_golem.name=Кольцо Керана
+item.wizardrygolems\:ring_spark_golem.desc=Големантия грозы призывает Искрового голема. Искровые големы наносят магический урон, игнорируют обычную броню и проявляют высокое сопротивление физическим атакам, тем не менее, восприимчивы к магии.
+
+item.wizardrygolems\:ring_electric_scatter.name=Кольцо-электрорассеиватель
+item.wizardrygolems\:ring_electric_scatter.desc=Големантия грозы призывает 5 малых големов из громового камня в случае, в случае отсутствия других активированных големовидных колец. Каждый голем оставляет после себя след остаточного электричества.
+
+item.wizardrygolems\:amulet_broken_ice.name=Амулет колотого ледяного кристалла
+item.wizardrygolems\:amulet_broken_ice.desc=50%% вероятность, что големы големантии льда раздробятся после смерти.
+
+item.wizardrygolems\:amulet_jagged_sapphire.name=Амулет изломанного сапфира
+item.wizardrygolems\:amulet_jagged_sapphire.desc=У големов големантии льда с каждой атакой есть 15%% вероятность применить Ледяные шипы под своей целью.
+
+item.wizardrygolems\:charm_frozen_mark.name=Знак оледенелой сферы
+item.wizardrygolems\:charm_frozen_mark.desc=Големы големантии льда создают сигилы льда после своей смерти.
+
+item.wizardrygolems\:charm_living_snow.name=Бутылка живого снега
+item.wizardrygolems\:charm_living_snow.desc=Бутылка содержит размещаемый живой снег. Живой снег призывает похожих Снежных големов в случае нахождения рядом врагов. Бутылка перезаряжается в Верстаке для тайноведения.
+
+tile.wizardrygolems\:permafrost_custom.name=Вечная мерзлота
+tile.wizardrygolems\:living_snow.name=Живой снег
+
+item.wizardrygolems\:head_permafrost_crown.name=Вечномёрзлая корона
+item.wizardrygolems\:head_permafrost_crown.desc=Големантия льда призывает 2 вечномёрзлых голема, оставляющих вечномёрзлый след.
+
+item.wizardrygolems\:belt_coldlink.name=Пояс холодной связи
+item.wizardrygolems\:belt_coldlink.desc=Големы големантии льда с каждой атакой исцеляют вас на полтора сердца, если на вас есть эффект Ледяного покрова.
+
+# SPELLS
+spell.wizardrygolems\:earth_golemancy=Големантия земли
+spell.wizardrygolems\:earth_golemancy.desc=Наполняет душу жизненной энергией для образования големов.
+spell.wizardrygolems\:earth_golemancy.low_wand_tier=Только Жезл леса уровня магистра может призывать Обсидианового голема.
+
+spell.wizardrygolems\:fire_golemancy=Големантия огня
+spell.wizardrygolems\:fire_golemancy.desc=Черпает энергию из эссенции Огня для создания големов.
+spell.wizardrygolems\:fire_golemancy.low_wand_tier=Только Жезл раскалённых углей уровня магистра может призывать Пламенного голема.
+
+spell.wizardrygolems\:ice_golemancy=Големантия льда
+spell.wizardrygolems\:ice_golemancy.desc=Черпает энергию из эссенции Льда для создания големов.
+spell.wizardrygolems\:ice_golemancy.low_wand_tier=Только Жезл мороза уровня магистра может призывать Зимнего голема.
+
+spell.wizardrygolems\:lightning_golemancy=Големантия грозы
+spell.wizardrygolems\:lightning_golemancy.desc=Черпает энергию из эссенции Грозы для создания големов.
+spell.wizardrygolems\:lightning_golemancy.low_wand_tier=Только Жезл искр уровня магистра может призывать этого голема.
+
+spell.wizardrygolems\:healing_golemancy=Лучезарная големантия
+spell.wizardrygolems\:healing_golemancy.desc=Черпает энергию из эссенции Света для создания големов.
+spell.wizardrygolems\:healing_golemancy.low_wand_tier=Только Жезл исцеления уровня магистра может призывать этого голема.
